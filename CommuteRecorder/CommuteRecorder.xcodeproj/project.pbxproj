@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		263EA2362D036C1984126464 /* Pods_CommuteRecorderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FBD14784E041FABBBE0D22F /* Pods_CommuteRecorderUITests.framework */; };
 		4F490ED2200DECDB0035C86E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F490ED1200DECDB0035C86E /* AppDelegate.swift */; };
 		4F490ED4200DECDB0035C86E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F490ED3200DECDB0035C86E /* ViewController.swift */; };
 		4F490ED7200DECDB0035C86E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F490ED5200DECDB0035C86E /* Main.storyboard */; };
@@ -14,6 +15,8 @@
 		4F490EDC200DECDB0035C86E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F490EDA200DECDB0035C86E /* LaunchScreen.storyboard */; };
 		4F490EE7200DECDB0035C86E /* CommuteRecorderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F490EE6200DECDB0035C86E /* CommuteRecorderTests.swift */; };
 		4F490EF2200DECDB0035C86E /* CommuteRecorderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F490EF1200DECDB0035C86E /* CommuteRecorderUITests.swift */; };
+		5FB2102501CE7AD4B2F0F2E2 /* Pods_CommuteRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8245B2770023151B142B15DF /* Pods_CommuteRecorder.framework */; };
+		9F7A23980DF2227446780416 /* Pods_CommuteRecorderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14AF65B246FD2EA4CE736EE /* Pods_CommuteRecorderTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3243FE2E269F859812CE440C /* Pods-CommuteRecorderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommuteRecorderTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CommuteRecorderTests/Pods-CommuteRecorderTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4F490ECE200DECDB0035C86E /* CommuteRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommuteRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F490ED1200DECDB0035C86E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F490ED3200DECDB0035C86E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +51,14 @@
 		4F490EED200DECDB0035C86E /* CommuteRecorderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommuteRecorderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F490EF1200DECDB0035C86E /* CommuteRecorderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteRecorderUITests.swift; sourceTree = "<group>"; };
 		4F490EF3200DECDB0035C86E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4FBD14784E041FABBBE0D22F /* Pods_CommuteRecorderUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommuteRecorderUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		57B13017978B7199AAFD27AE /* Pods-CommuteRecorderUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommuteRecorderUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CommuteRecorderUITests/Pods-CommuteRecorderUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		60D9229B19B8EE6CE25D5FEA /* Pods-CommuteRecorderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommuteRecorderTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CommuteRecorderTests/Pods-CommuteRecorderTests.release.xcconfig"; sourceTree = "<group>"; };
+		630F113DD14B722D4F6E7DB4 /* Pods-CommuteRecorderUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommuteRecorderUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CommuteRecorderUITests/Pods-CommuteRecorderUITests.release.xcconfig"; sourceTree = "<group>"; };
+		8245B2770023151B142B15DF /* Pods_CommuteRecorder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommuteRecorder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADD94856099D33FC1A4A216E /* Pods-CommuteRecorder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommuteRecorder.release.xcconfig"; path = "Pods/Target Support Files/Pods-CommuteRecorder/Pods-CommuteRecorder.release.xcconfig"; sourceTree = "<group>"; };
+		D8AF6436780AB77E756B03BF /* Pods-CommuteRecorder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommuteRecorder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CommuteRecorder/Pods-CommuteRecorder.debug.xcconfig"; sourceTree = "<group>"; };
+		E14AF65B246FD2EA4CE736EE /* Pods_CommuteRecorderTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommuteRecorderTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FB2102501CE7AD4B2F0F2E2 /* Pods_CommuteRecorder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F7A23980DF2227446780416 /* Pods_CommuteRecorderTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,12 +82,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				263EA2362D036C1984126464 /* Pods_CommuteRecorderUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2CF58AA2160FC3C180378C45 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D8AF6436780AB77E756B03BF /* Pods-CommuteRecorder.debug.xcconfig */,
+				ADD94856099D33FC1A4A216E /* Pods-CommuteRecorder.release.xcconfig */,
+				3243FE2E269F859812CE440C /* Pods-CommuteRecorderTests.debug.xcconfig */,
+				60D9229B19B8EE6CE25D5FEA /* Pods-CommuteRecorderTests.release.xcconfig */,
+				57B13017978B7199AAFD27AE /* Pods-CommuteRecorderUITests.debug.xcconfig */,
+				630F113DD14B722D4F6E7DB4 /* Pods-CommuteRecorderUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		3E23D87C5456F6648ABA1EBE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8245B2770023151B142B15DF /* Pods_CommuteRecorder.framework */,
+				E14AF65B246FD2EA4CE736EE /* Pods_CommuteRecorderTests.framework */,
+				4FBD14784E041FABBBE0D22F /* Pods_CommuteRecorderUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4F490EC5200DECDB0035C86E = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +119,8 @@
 				4F490EE5200DECDB0035C86E /* CommuteRecorderTests */,
 				4F490EF0200DECDB0035C86E /* CommuteRecorderUITests */,
 				4F490ECF200DECDB0035C86E /* Products */,
+				2CF58AA2160FC3C180378C45 /* Pods */,
+				3E23D87C5456F6648ABA1EBE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -132,9 +172,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4F490EF6200DECDB0035C86E /* Build configuration list for PBXNativeTarget "CommuteRecorder" */;
 			buildPhases = (
+				77F9DB41BF305997BB4E162F /* [CP] Check Pods Manifest.lock */,
 				4F490ECA200DECDB0035C86E /* Sources */,
 				4F490ECB200DECDB0035C86E /* Frameworks */,
 				4F490ECC200DECDB0035C86E /* Resources */,
+				149CAC25196CCAC6EC88E8F4 /* [CP] Embed Pods Frameworks */,
+				F5A46F730072DBC250D20D97 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,9 +192,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4F490EF9200DECDB0035C86E /* Build configuration list for PBXNativeTarget "CommuteRecorderTests" */;
 			buildPhases = (
+				D61104AA285B180A4C14DF2B /* [CP] Check Pods Manifest.lock */,
 				4F490EDE200DECDB0035C86E /* Sources */,
 				4F490EDF200DECDB0035C86E /* Frameworks */,
 				4F490EE0200DECDB0035C86E /* Resources */,
+				9286EB8AD39CA658D6EF243D /* [CP] Embed Pods Frameworks */,
+				8E635DA009DA44B76DD947E3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -167,9 +213,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4F490EFC200DECDB0035C86E /* Build configuration list for PBXNativeTarget "CommuteRecorderUITests" */;
 			buildPhases = (
+				E4926AAA0F6ADBCAA47A8D58 /* [CP] Check Pods Manifest.lock */,
 				4F490EE9200DECDB0035C86E /* Sources */,
 				4F490EEA200DECDB0035C86E /* Frameworks */,
 				4F490EEB200DECDB0035C86E /* Resources */,
+				DB65E9F8A3AEBED51A3616B4 /* [CP] Embed Pods Frameworks */,
+				2C01C0D0B2D01B33B4393C7E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -253,6 +302,153 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		149CAC25196CCAC6EC88E8F4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CommuteRecorder/Pods-CommuteRecorder-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2C01C0D0B2D01B33B4393C7E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CommuteRecorderUITests/Pods-CommuteRecorderUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		77F9DB41BF305997BB4E162F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CommuteRecorder-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8E635DA009DA44B76DD947E3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CommuteRecorderTests/Pods-CommuteRecorderTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9286EB8AD39CA658D6EF243D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CommuteRecorderTests/Pods-CommuteRecorderTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D61104AA285B180A4C14DF2B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CommuteRecorderTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DB65E9F8A3AEBED51A3616B4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CommuteRecorderUITests/Pods-CommuteRecorderUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E4926AAA0F6ADBCAA47A8D58 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CommuteRecorderUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F5A46F730072DBC250D20D97 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CommuteRecorder/Pods-CommuteRecorder-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4F490ECA200DECDB0035C86E /* Sources */ = {
@@ -424,6 +620,7 @@
 		};
 		4F490EF7200DECDB0035C86E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D8AF6436780AB77E756B03BF /* Pods-CommuteRecorder.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -439,6 +636,7 @@
 		};
 		4F490EF8200DECDB0035C86E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ADD94856099D33FC1A4A216E /* Pods-CommuteRecorder.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -454,6 +652,7 @@
 		};
 		4F490EFA200DECDB0035C86E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3243FE2E269F859812CE440C /* Pods-CommuteRecorderTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -471,6 +670,7 @@
 		};
 		4F490EFB200DECDB0035C86E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 60D9229B19B8EE6CE25D5FEA /* Pods-CommuteRecorderTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -488,6 +688,7 @@
 		};
 		4F490EFD200DECDB0035C86E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 57B13017978B7199AAFD27AE /* Pods-CommuteRecorderUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -504,6 +705,7 @@
 		};
 		4F490EFE200DECDB0035C86E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 630F113DD14B722D4F6E7DB4 /* Pods-CommuteRecorderUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
