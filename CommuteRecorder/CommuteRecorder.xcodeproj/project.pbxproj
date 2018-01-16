@@ -1,0 +1,563 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4F490ED2200DECDB0035C86E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F490ED1200DECDB0035C86E /* AppDelegate.swift */; };
+		4F490ED4200DECDB0035C86E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F490ED3200DECDB0035C86E /* ViewController.swift */; };
+		4F490ED7200DECDB0035C86E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F490ED5200DECDB0035C86E /* Main.storyboard */; };
+		4F490ED9200DECDB0035C86E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F490ED8200DECDB0035C86E /* Assets.xcassets */; };
+		4F490EDC200DECDB0035C86E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F490EDA200DECDB0035C86E /* LaunchScreen.storyboard */; };
+		4F490EE7200DECDB0035C86E /* CommuteRecorderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F490EE6200DECDB0035C86E /* CommuteRecorderTests.swift */; };
+		4F490EF2200DECDB0035C86E /* CommuteRecorderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F490EF1200DECDB0035C86E /* CommuteRecorderUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4F490EE3200DECDB0035C86E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4F490EC6200DECDB0035C86E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4F490ECD200DECDB0035C86E;
+			remoteInfo = CommuteRecorder;
+		};
+		4F490EEE200DECDB0035C86E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4F490EC6200DECDB0035C86E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4F490ECD200DECDB0035C86E;
+			remoteInfo = CommuteRecorder;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4F490ECE200DECDB0035C86E /* CommuteRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommuteRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F490ED1200DECDB0035C86E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4F490ED3200DECDB0035C86E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4F490ED6200DECDB0035C86E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4F490ED8200DECDB0035C86E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4F490EDB200DECDB0035C86E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4F490EDD200DECDB0035C86E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4F490EE2200DECDB0035C86E /* CommuteRecorderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommuteRecorderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F490EE6200DECDB0035C86E /* CommuteRecorderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteRecorderTests.swift; sourceTree = "<group>"; };
+		4F490EE8200DECDB0035C86E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4F490EED200DECDB0035C86E /* CommuteRecorderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommuteRecorderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F490EF1200DECDB0035C86E /* CommuteRecorderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteRecorderUITests.swift; sourceTree = "<group>"; };
+		4F490EF3200DECDB0035C86E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4F490ECB200DECDB0035C86E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F490EDF200DECDB0035C86E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F490EEA200DECDB0035C86E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4F490EC5200DECDB0035C86E = {
+			isa = PBXGroup;
+			children = (
+				4F490ED0200DECDB0035C86E /* CommuteRecorder */,
+				4F490EE5200DECDB0035C86E /* CommuteRecorderTests */,
+				4F490EF0200DECDB0035C86E /* CommuteRecorderUITests */,
+				4F490ECF200DECDB0035C86E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4F490ECF200DECDB0035C86E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4F490ECE200DECDB0035C86E /* CommuteRecorder.app */,
+				4F490EE2200DECDB0035C86E /* CommuteRecorderTests.xctest */,
+				4F490EED200DECDB0035C86E /* CommuteRecorderUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4F490ED0200DECDB0035C86E /* CommuteRecorder */ = {
+			isa = PBXGroup;
+			children = (
+				4F490ED1200DECDB0035C86E /* AppDelegate.swift */,
+				4F490ED3200DECDB0035C86E /* ViewController.swift */,
+				4F490ED5200DECDB0035C86E /* Main.storyboard */,
+				4F490ED8200DECDB0035C86E /* Assets.xcassets */,
+				4F490EDA200DECDB0035C86E /* LaunchScreen.storyboard */,
+				4F490EDD200DECDB0035C86E /* Info.plist */,
+			);
+			path = CommuteRecorder;
+			sourceTree = "<group>";
+		};
+		4F490EE5200DECDB0035C86E /* CommuteRecorderTests */ = {
+			isa = PBXGroup;
+			children = (
+				4F490EE6200DECDB0035C86E /* CommuteRecorderTests.swift */,
+				4F490EE8200DECDB0035C86E /* Info.plist */,
+			);
+			path = CommuteRecorderTests;
+			sourceTree = "<group>";
+		};
+		4F490EF0200DECDB0035C86E /* CommuteRecorderUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4F490EF1200DECDB0035C86E /* CommuteRecorderUITests.swift */,
+				4F490EF3200DECDB0035C86E /* Info.plist */,
+			);
+			path = CommuteRecorderUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4F490ECD200DECDB0035C86E /* CommuteRecorder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4F490EF6200DECDB0035C86E /* Build configuration list for PBXNativeTarget "CommuteRecorder" */;
+			buildPhases = (
+				4F490ECA200DECDB0035C86E /* Sources */,
+				4F490ECB200DECDB0035C86E /* Frameworks */,
+				4F490ECC200DECDB0035C86E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CommuteRecorder;
+			productName = CommuteRecorder;
+			productReference = 4F490ECE200DECDB0035C86E /* CommuteRecorder.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4F490EE1200DECDB0035C86E /* CommuteRecorderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4F490EF9200DECDB0035C86E /* Build configuration list for PBXNativeTarget "CommuteRecorderTests" */;
+			buildPhases = (
+				4F490EDE200DECDB0035C86E /* Sources */,
+				4F490EDF200DECDB0035C86E /* Frameworks */,
+				4F490EE0200DECDB0035C86E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4F490EE4200DECDB0035C86E /* PBXTargetDependency */,
+			);
+			name = CommuteRecorderTests;
+			productName = CommuteRecorderTests;
+			productReference = 4F490EE2200DECDB0035C86E /* CommuteRecorderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4F490EEC200DECDB0035C86E /* CommuteRecorderUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4F490EFC200DECDB0035C86E /* Build configuration list for PBXNativeTarget "CommuteRecorderUITests" */;
+			buildPhases = (
+				4F490EE9200DECDB0035C86E /* Sources */,
+				4F490EEA200DECDB0035C86E /* Frameworks */,
+				4F490EEB200DECDB0035C86E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4F490EEF200DECDB0035C86E /* PBXTargetDependency */,
+			);
+			name = CommuteRecorderUITests;
+			productName = CommuteRecorderUITests;
+			productReference = 4F490EED200DECDB0035C86E /* CommuteRecorderUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4F490EC6200DECDB0035C86E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = maro;
+				TargetAttributes = {
+					4F490ECD200DECDB0035C86E = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					4F490EE1200DECDB0035C86E = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 4F490ECD200DECDB0035C86E;
+					};
+					4F490EEC200DECDB0035C86E = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 4F490ECD200DECDB0035C86E;
+					};
+				};
+			};
+			buildConfigurationList = 4F490EC9200DECDB0035C86E /* Build configuration list for PBXProject "CommuteRecorder" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4F490EC5200DECDB0035C86E;
+			productRefGroup = 4F490ECF200DECDB0035C86E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4F490ECD200DECDB0035C86E /* CommuteRecorder */,
+				4F490EE1200DECDB0035C86E /* CommuteRecorderTests */,
+				4F490EEC200DECDB0035C86E /* CommuteRecorderUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4F490ECC200DECDB0035C86E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F490EDC200DECDB0035C86E /* LaunchScreen.storyboard in Resources */,
+				4F490ED9200DECDB0035C86E /* Assets.xcassets in Resources */,
+				4F490ED7200DECDB0035C86E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F490EE0200DECDB0035C86E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F490EEB200DECDB0035C86E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4F490ECA200DECDB0035C86E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F490ED4200DECDB0035C86E /* ViewController.swift in Sources */,
+				4F490ED2200DECDB0035C86E /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F490EDE200DECDB0035C86E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F490EE7200DECDB0035C86E /* CommuteRecorderTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F490EE9200DECDB0035C86E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F490EF2200DECDB0035C86E /* CommuteRecorderUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4F490EE4200DECDB0035C86E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4F490ECD200DECDB0035C86E /* CommuteRecorder */;
+			targetProxy = 4F490EE3200DECDB0035C86E /* PBXContainerItemProxy */;
+		};
+		4F490EEF200DECDB0035C86E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4F490ECD200DECDB0035C86E /* CommuteRecorder */;
+			targetProxy = 4F490EEE200DECDB0035C86E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4F490ED5200DECDB0035C86E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4F490ED6200DECDB0035C86E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4F490EDA200DECDB0035C86E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4F490EDB200DECDB0035C86E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4F490EF4200DECDB0035C86E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4F490EF5200DECDB0035C86E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4F490EF7200DECDB0035C86E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4282VJNTJ4;
+				INFOPLIST_FILE = CommuteRecorder/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.maro.CommuteRecorder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4F490EF8200DECDB0035C86E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4282VJNTJ4;
+				INFOPLIST_FILE = CommuteRecorder/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.maro.CommuteRecorder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		4F490EFA200DECDB0035C86E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4282VJNTJ4;
+				INFOPLIST_FILE = CommuteRecorderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.maro.CommuteRecorderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CommuteRecorder.app/CommuteRecorder";
+			};
+			name = Debug;
+		};
+		4F490EFB200DECDB0035C86E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4282VJNTJ4;
+				INFOPLIST_FILE = CommuteRecorderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.maro.CommuteRecorderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CommuteRecorder.app/CommuteRecorder";
+			};
+			name = Release;
+		};
+		4F490EFD200DECDB0035C86E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4282VJNTJ4;
+				INFOPLIST_FILE = CommuteRecorderUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.maro.CommuteRecorderUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CommuteRecorder;
+			};
+			name = Debug;
+		};
+		4F490EFE200DECDB0035C86E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4282VJNTJ4;
+				INFOPLIST_FILE = CommuteRecorderUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.maro.CommuteRecorderUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CommuteRecorder;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4F490EC9200DECDB0035C86E /* Build configuration list for PBXProject "CommuteRecorder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F490EF4200DECDB0035C86E /* Debug */,
+				4F490EF5200DECDB0035C86E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4F490EF6200DECDB0035C86E /* Build configuration list for PBXNativeTarget "CommuteRecorder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F490EF7200DECDB0035C86E /* Debug */,
+				4F490EF8200DECDB0035C86E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4F490EF9200DECDB0035C86E /* Build configuration list for PBXNativeTarget "CommuteRecorderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F490EFA200DECDB0035C86E /* Debug */,
+				4F490EFB200DECDB0035C86E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4F490EFC200DECDB0035C86E /* Build configuration list for PBXNativeTarget "CommuteRecorderUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F490EFD200DECDB0035C86E /* Debug */,
+				4F490EFE200DECDB0035C86E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4F490EC6200DECDB0035C86E /* Project object */;
+}
