@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +13,164 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CommuteRecorder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이름" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6Y-2u-LZ8">
+                                <rect key="frame" x="166.66666666666666" y="54" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="HAZ-6e-Wu8"/>
+                                    <constraint firstAttribute="width" constant="42" id="l6s-Bc-BYq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="이름을 입력해주세요" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="MMU-Ys-VUZ">
+                                <rect key="frame" x="62.666666666666657" y="79" width="249.99999999999997" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="91t-KO-osl"/>
+                                    <constraint firstAttribute="height" constant="30" id="Dlv-Pq-Ij9"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d3u-1L-ofz" customClass="CircularSlider" customModule="CircularSlider">
+                                <rect key="frame" x="62.666666666666657" y="286" width="249.99999999999997" height="250"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="MEE-P3-4eS"/>
+                                    <constraint firstAttribute="height" constant="250" id="jjx-j7-3MU"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="radiansOffset">
+                                        <real key="value" value="0.29999999999999999"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="icon" value="clockImg"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="pgNormalColor">
+                                        <color key="value" red="0.16078431369999999" green="0.50196078430000002" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                        <real key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="highlighted" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="type">
+                                        <integer key="value" value="0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="이번주잔여시간"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="pgHighlightedColor">
+                                        <color key="value" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="knobRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                        <color key="value" red="0.16078431369999999" green="0.50196078430000002" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fractionDigits">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="divisa" value="시간"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DTQ-LX-6sn">
+                                <rect key="frame" x="85" y="356" width="204" height="99"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="clickConfirmWorkingTime:" destination="BYZ-38-t0r" eventType="touchUpInside" id="om9-Q5-LlB"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="working" translatesAutoresizingMaskIntoConstraints="NO" id="MJH-FM-DhC">
+                                <rect key="frame" x="157" y="647" width="61" height="61"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="61" id="5kU-av-UbP"/>
+                                    <constraint firstAttribute="width" constant="61" id="vjK-sv-gCO"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="N0F-W6-V3N">
+                                <rect key="frame" x="50" y="718" width="275" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aly-wV-upF">
+                                        <rect key="frame" x="0.0" y="0.0" width="137" height="50"/>
+                                        <color key="backgroundColor" red="0.0" green="0.29411764705882354" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="출근">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="clickCheckIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IZz-i6-vI1"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wxy-NY-stE">
+                                        <rect key="frame" x="138" y="0.0" width="137" height="50"/>
+                                        <color key="backgroundColor" red="0.0" green="0.29411764705882354" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="휴가">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="clickVacation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GYX-ky-PGd"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="vBR-2N-RxN"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e00-6h-Pan">
+                                <rect key="frame" x="62.666666666666657" y="133" width="249.99999999999997" height="20.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="N0F-W6-V3N" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="1Q5-Rb-ckJ"/>
+                            <constraint firstItem="d3u-1L-ofz" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="8WX-Af-MaN"/>
+                            <constraint firstItem="MMU-Ys-VUZ" firstAttribute="top" secondItem="F6Y-2u-LZ8" secondAttribute="bottom" constant="4" id="CFN-yS-loS"/>
+                            <constraint firstItem="e00-6h-Pan" firstAttribute="top" secondItem="MMU-Ys-VUZ" secondAttribute="bottom" constant="24" id="Jd2-fC-5RB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="N0F-W6-V3N" secondAttribute="trailing" constant="50" id="LvN-h3-DtZ"/>
+                            <constraint firstItem="F6Y-2u-LZ8" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="QFm-ad-1Ev"/>
+                            <constraint firstItem="d3u-1L-ofz" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="SNT-6i-xS7"/>
+                            <constraint firstItem="MJH-FM-DhC" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="VPM-IB-lob"/>
+                            <constraint firstItem="MMU-Ys-VUZ" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="VfE-u6-blZ"/>
+                            <constraint firstItem="MMU-Ys-VUZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="35" id="jyL-Yb-Dwe"/>
+                            <constraint firstItem="N0F-W6-V3N" firstAttribute="top" secondItem="MJH-FM-DhC" secondAttribute="bottom" constant="10" id="kBi-1M-8z2"/>
+                            <constraint firstItem="F6Y-2u-LZ8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="sYf-C9-BNx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="N0F-W6-V3N" secondAttribute="bottom" constant="10" id="tW1-Np-EfL"/>
+                            <constraint firstItem="e00-6h-Pan" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="uwN-gP-1k5"/>
+                            <constraint firstItem="e00-6h-Pan" firstAttribute="width" secondItem="MMU-Ys-VUZ" secondAttribute="width" id="xME-Lp-wo5"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="checkInBtn" destination="Aly-wV-upF" id="DEY-Up-cso"/>
+                        <outlet property="circularSlider" destination="d3u-1L-ofz" id="Jmp-ep-toS"/>
+                        <outlet property="nameTextField" destination="MMU-Ys-VUZ" id="meo-aN-zLE"/>
+                        <outlet property="startEndWeekLabel" destination="e00-6h-Pan" id="DDt-Jy-sBH"/>
+                        <outlet property="workingIcon" destination="MJH-FM-DhC" id="yCs-mR-sGw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="138.75" y="132.04225352112675"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="clockImg" width="171" height="171"/>
+        <image name="working" width="170" height="170"/>
+    </resources>
 </document>
