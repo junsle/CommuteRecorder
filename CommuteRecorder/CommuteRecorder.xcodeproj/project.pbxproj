@@ -16,8 +16,10 @@
 		4F490EE7200DECDB0035C86E /* CommuteRecorderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F490EE6200DECDB0035C86E /* CommuteRecorderTests.swift */; };
 		4F490EF2200DECDB0035C86E /* CommuteRecorderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F490EF1200DECDB0035C86E /* CommuteRecorderUITests.swift */; };
 		4FC47F19200F37E300522036 /* CircularSlider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FC47F1A200F37E300522036 /* CircularSlider.framework */; };
-		4FC47F1B200F39E800522036 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FC47F1D200F39E800522036 /* Realm.framework */; };
-		4FC47F1C200F39E800522036 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FC47F1E200F39E800522036 /* RealmSwift.framework */; };
+		4FC92C8F20118E070099B786 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FC92C8E20118E070099B786 /* NotificationCenter.framework */; };
+		4FC92C9220118E070099B786 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC92C9120118E070099B786 /* TodayViewController.swift */; };
+		4FC92C9520118E070099B786 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FC92C9320118E070099B786 /* MainInterface.storyboard */; };
+		4FC92C9920118E070099B786 /* todayWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4FC92C8D20118E070099B786 /* todayWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5FB2102501CE7AD4B2F0F2E2 /* Pods_CommuteRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8245B2770023151B142B15DF /* Pods_CommuteRecorder.framework */; };
 		9F7A23980DF2227446780416 /* Pods_CommuteRecorderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14AF65B246FD2EA4CE736EE /* Pods_CommuteRecorderTests.framework */; };
 /* End PBXBuildFile section */
@@ -37,7 +39,28 @@
 			remoteGlobalIDString = 4F490ECD200DECDB0035C86E;
 			remoteInfo = CommuteRecorder;
 		};
+		4FC92C9720118E070099B786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4F490EC6200DECDB0035C86E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4FC92C8C20118E070099B786;
+			remoteInfo = todayWidget;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4FC92C9D20118E070099B786 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				4FC92C9920118E070099B786 /* todayWidget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3243FE2E269F859812CE440C /* Pods-CommuteRecorderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommuteRecorderTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CommuteRecorderTests/Pods-CommuteRecorderTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -58,6 +81,13 @@
 		4FC47F1A200F37E300522036 /* CircularSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CircularSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FC47F1D200F39E800522036 /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FC47F1E200F39E800522036 /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FC92C8D20118E070099B786 /* todayWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = todayWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FC92C8E20118E070099B786 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		4FC92C9120118E070099B786 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		4FC92C9420118E070099B786 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		4FC92C9620118E070099B786 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4FF114CE2011B26F006AEF0F /* CommuteRecorder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CommuteRecorder.entitlements; sourceTree = "<group>"; };
+		4FF114CF2011B2AD006AEF0F /* todayWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = todayWidget.entitlements; sourceTree = "<group>"; };
 		57B13017978B7199AAFD27AE /* Pods-CommuteRecorderUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommuteRecorderUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CommuteRecorderUITests/Pods-CommuteRecorderUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		60D9229B19B8EE6CE25D5FEA /* Pods-CommuteRecorderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommuteRecorderTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CommuteRecorderTests/Pods-CommuteRecorderTests.release.xcconfig"; sourceTree = "<group>"; };
 		630F113DD14B722D4F6E7DB4 /* Pods-CommuteRecorderUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommuteRecorderUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CommuteRecorderUITests/Pods-CommuteRecorderUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -72,8 +102,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4FC47F1B200F39E800522036 /* Realm.framework in Frameworks */,
-				4FC47F1C200F39E800522036 /* RealmSwift.framework in Frameworks */,
 				4FC47F19200F37E300522036 /* CircularSlider.framework in Frameworks */,
 				5FB2102501CE7AD4B2F0F2E2 /* Pods_CommuteRecorder.framework in Frameworks */,
 			);
@@ -92,6 +120,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				263EA2362D036C1984126464 /* Pods_CommuteRecorderUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4FC92C8A20118E070099B786 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FC92C8F20118E070099B786 /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +156,7 @@
 				8245B2770023151B142B15DF /* Pods_CommuteRecorder.framework */,
 				E14AF65B246FD2EA4CE736EE /* Pods_CommuteRecorderTests.framework */,
 				4FBD14784E041FABBBE0D22F /* Pods_CommuteRecorderUITests.framework */,
+				4FC92C8E20118E070099B786 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -130,6 +167,7 @@
 				4F490ED0200DECDB0035C86E /* CommuteRecorder */,
 				4F490EE5200DECDB0035C86E /* CommuteRecorderTests */,
 				4F490EF0200DECDB0035C86E /* CommuteRecorderUITests */,
+				4FC92C9020118E070099B786 /* todayWidget */,
 				4F490ECF200DECDB0035C86E /* Products */,
 				2CF58AA2160FC3C180378C45 /* Pods */,
 				3E23D87C5456F6648ABA1EBE /* Frameworks */,
@@ -142,6 +180,7 @@
 				4F490ECE200DECDB0035C86E /* CommuteRecorder.app */,
 				4F490EE2200DECDB0035C86E /* CommuteRecorderTests.xctest */,
 				4F490EED200DECDB0035C86E /* CommuteRecorderUITests.xctest */,
+				4FC92C8D20118E070099B786 /* todayWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -149,6 +188,7 @@
 		4F490ED0200DECDB0035C86E /* CommuteRecorder */ = {
 			isa = PBXGroup;
 			children = (
+				4FF114CE2011B26F006AEF0F /* CommuteRecorder.entitlements */,
 				4F490ED1200DECDB0035C86E /* AppDelegate.swift */,
 				4F490ED3200DECDB0035C86E /* ViewController.swift */,
 				4F490ED5200DECDB0035C86E /* Main.storyboard */,
@@ -177,6 +217,17 @@
 			path = CommuteRecorderUITests;
 			sourceTree = "<group>";
 		};
+		4FC92C9020118E070099B786 /* todayWidget */ = {
+			isa = PBXGroup;
+			children = (
+				4FF114CF2011B2AD006AEF0F /* todayWidget.entitlements */,
+				4FC92C9120118E070099B786 /* TodayViewController.swift */,
+				4FC92C9320118E070099B786 /* MainInterface.storyboard */,
+				4FC92C9620118E070099B786 /* Info.plist */,
+			);
+			path = todayWidget;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -190,10 +241,13 @@
 				4F490ECC200DECDB0035C86E /* Resources */,
 				149CAC25196CCAC6EC88E8F4 /* [CP] Embed Pods Frameworks */,
 				F5A46F730072DBC250D20D97 /* [CP] Copy Pods Resources */,
+				4FC92C9D20118E070099B786 /* Embed App Extensions */,
+				4F18396D2015D9B200334BA0 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				4FC92C9820118E070099B786 /* PBXTargetDependency */,
 			);
 			name = CommuteRecorder;
 			productName = CommuteRecorder;
@@ -242,6 +296,24 @@
 			productReference = 4F490EED200DECDB0035C86E /* CommuteRecorderUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		4FC92C8C20118E070099B786 /* todayWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4FC92C9C20118E070099B786 /* Build configuration list for PBXNativeTarget "todayWidget" */;
+			buildPhases = (
+				4FC92C8920118E070099B786 /* Sources */,
+				4FC92C8A20118E070099B786 /* Frameworks */,
+				4FC92C8B20118E070099B786 /* Resources */,
+				4F18396C2015D98800334BA0 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = todayWidget;
+			productName = todayWidget;
+			productReference = 4FC92C8D20118E070099B786 /* todayWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -255,6 +327,11 @@
 					4F490ECD200DECDB0035C86E = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					4F490EE1200DECDB0035C86E = {
 						CreatedOnToolsVersion = 9.2;
@@ -265,6 +342,15 @@
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 4F490ECD200DECDB0035C86E;
+					};
+					4FC92C8C20118E070099B786 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -284,6 +370,7 @@
 				4F490ECD200DECDB0035C86E /* CommuteRecorder */,
 				4F490EE1200DECDB0035C86E /* CommuteRecorderTests */,
 				4F490EEC200DECDB0035C86E /* CommuteRecorderUITests */,
+				4FC92C8C20118E070099B786 /* todayWidget */,
 			);
 		};
 /* End PBXProject section */
@@ -310,6 +397,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4FC92C8B20118E070099B786 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FC92C9520118E070099B786 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +443,32 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CommuteRecorderUITests/Pods-CommuteRecorderUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		4F18396C2015D98800334BA0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "xattr -cr ~/Library/Developer/Xcode/DerivedData || echo Clear";
+		};
+		4F18396D2015D9B200334BA0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "xattr -cr ~/Library/Developer/Xcode/DerivedData || echo Clear\n";
 		};
 		77F9DB41BF305997BB4E162F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -491,6 +612,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4FC92C8920118E070099B786 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FC92C9220118E070099B786 /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -503,6 +632,11 @@
 			isa = PBXTargetDependency;
 			target = 4F490ECD200DECDB0035C86E /* CommuteRecorder */;
 			targetProxy = 4F490EEE200DECDB0035C86E /* PBXContainerItemProxy */;
+		};
+		4FC92C9820118E070099B786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4FC92C8C20118E070099B786 /* todayWidget */;
+			targetProxy = 4FC92C9720118E070099B786 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -521,6 +655,14 @@
 				4F490EDB200DECDB0035C86E /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		4FC92C9320118E070099B786 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4FC92C9420118E070099B786 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -558,6 +700,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 4282VJNTJ4;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -615,6 +758,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 4282VJNTJ4;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -637,14 +781,19 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D8AF6436780AB77E756B03BF /* Pods-CommuteRecorder.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CommuteRecorder/CommuteRecorder.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4282VJNTJ4;
 				INFOPLIST_FILE = CommuteRecorder/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.maro.CommuteRecorder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -654,14 +803,19 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ADD94856099D33FC1A4A216E /* Pods-CommuteRecorder.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CommuteRecorder/CommuteRecorder.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4282VJNTJ4;
 				INFOPLIST_FILE = CommuteRecorder/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.maro.CommuteRecorder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -737,6 +891,46 @@
 			};
 			name = Release;
 		};
+		4FC92C9A20118E070099B786 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = todayWidget/todayWidget.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4282VJNTJ4;
+				INFOPLIST_FILE = todayWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.maro.CommuteRecorder.todayWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		4FC92C9B20118E070099B786 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = todayWidget/todayWidget.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4282VJNTJ4;
+				INFOPLIST_FILE = todayWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.maro.CommuteRecorder.todayWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -772,6 +966,15 @@
 			buildConfigurations = (
 				4F490EFD200DECDB0035C86E /* Debug */,
 				4F490EFE200DECDB0035C86E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4FC92C9C20118E070099B786 /* Build configuration list for PBXNativeTarget "todayWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4FC92C9A20118E070099B786 /* Debug */,
+				4FC92C9B20118E070099B786 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -8,6 +8,7 @@
 
 import UIKit
 import CircularSlider
+import UserNotifications
 
 class ViewController: UIViewController {
     @IBOutlet weak var circularSlider: CircularSlider!
@@ -16,13 +17,55 @@ class ViewController: UIViewController {
     @IBOutlet weak var startEndWeekLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     
-    let defaults:UserDefaults = UserDefaults.standard
+    var defaults = UserDefaults(suiteName: "group.com.maro.CommuteRecorder")
     var isCheckIn:Bool = false
-    
+    let center = UNUserNotificationCenter.current()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCircularSlider()
         setupTapGesture()
+        
+        nameTextField.delegate = self
+        nameTextField.text = 이름
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: .UIApplicationWillEnterForeground, object: nil)
+        
+        let options: UNAuthorizationOptions = [.alert, .sound];
+        center.requestAuthorization(options: options) {
+            (granted, error) in
+            if !granted {
+                print("Something went wrong")
+            }
+        }
+    }
+    
+    // my selector that was defined above
+    @objc func willEnterForeground() {
+        workingIcon.isHidden = true
+
+        if !출근중 {
+            checkInBtn.setTitle("출근", for: .normal)
+            workingIcon.isHidden = true
+        }else {
+            checkInBtn.setTitle("퇴근", for: .normal)
+            workingIcon.isHidden = false
+            workingIcon.blink()
+        }
+        
+        startEndWeekLabel.text = "\(dateToMMddString(date: Date().startOfWeek) ?? "") ~ \(dateToMMddString(date: Date().endOfWeek) ?? "")"
+        
+        totalWorkingTime()
+        
+        if 출근중 {
+            checkInBtn.setTitle("퇴근", for: .normal)
+            isCheckIn = true
+            workingIcon.isHidden = false
+            workingIcon.blink()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         if !isCheckIn {
             checkInBtn.setTitle("출근", for: .normal)
@@ -36,15 +79,22 @@ class ViewController: UIViewController {
         startEndWeekLabel.text = "\(dateToMMddString(date: Date().startOfWeek) ?? "") ~ \(dateToMMddString(date: Date().endOfWeek) ?? "")"
         
         totalWorkingTime()
-        nameTextField.delegate = self
-        nameTextField.text = 이름
+        
+        if 출근중 {
+            checkInBtn.setTitle("퇴근", for: .normal)
+            isCheckIn = true
+            workingIcon.isHidden = false
+            workingIcon.blink()
+        }
     }
+    
     @IBAction func clickConfirmWorkingTime(_ sender: Any) {
         let total:String = "월 : \(dateToHHmmString(date: stringToDate(date: 월출근)) ?? "") ~ \(dateToHHmmString(date:stringToDate(date: 월퇴근)) ?? "" ) \n"
             + "화 : \(dateToHHmmString(date: stringToDate(date: 화출근)) ?? "") ~ \(dateToHHmmString(date:stringToDate(date: 화퇴근)) ?? "" ) \n"
             + "수 : \(dateToHHmmString(date: stringToDate(date: 수출근)) ?? "") ~ \(dateToHHmmString(date:stringToDate(date: 수퇴근)) ?? "" ) \n"
             + "목 : \(dateToHHmmString(date: stringToDate(date: 목출근)) ?? "") ~ \(dateToHHmmString(date:stringToDate(date: 목퇴근)) ?? "" ) \n"
             + "금 : \(dateToHHmmString(date: stringToDate(date: 금출근)) ?? "") ~ \(dateToHHmmString(date:stringToDate(date: 금퇴근)) ?? "" ) \n"
+            + "휴가 : \(휴가)\n"
         
         let actionSheet = UIAlertController(title: "이번주 근무 현황", message: total, preferredStyle: UIAlertControllerStyle.alert)
         actionSheet.addAction(UIAlertAction(title: "확인", style: .cancel, handler: { (action) -> Void in
@@ -57,21 +107,26 @@ class ViewController: UIViewController {
             normalToast("이름을 입력해주세요", on: self)
             return
         }
+        
+        let checkInTime:String = dateToHHmmString(date: Date()) ?? ""
         if isCheckIn {
             checkInBtn.setTitle("출근", for: .normal)
             workingIcon.isHidden = true
             isCheckIn = false
             workingIcon.stopAni()
-            normalToast(dateToHHmmString(date: Date()) ?? "" + "퇴근", on: self)
+            normalToast("\(checkInTime) 퇴근", on: self)
             setCheckIn(isCheckIn: false)
+            출근중 = false
+            createMsg(msg: "\(이름) \(checkInTime) 퇴근 \n 오늘일한시간 : \(todayWorkingTime() ?? "")\n 이번주잔여시간 : \(totalWorkingTime() ?? "")")
         }else {
             checkInBtn.setTitle("퇴근", for: .normal)
             isCheckIn = true
             workingIcon.isHidden = false
             workingIcon.blink()
-            normalToast(dateToHHmmString(date: Date()) ?? "" + "출근", on: self)
+            normalToast("\(checkInTime) 출근", on: self)
             setCheckIn(isCheckIn: true)
-//            createMsg()
+            출근중 = true
+            createMsg(msg: "\(이름) \(checkInTime) 출근 \n이번주잔여시간 : \(totalWorkingTime() ?? "")\n")
         }
     }
     
@@ -109,6 +164,8 @@ class ViewController: UIViewController {
                 if isCheckIn {
                     금출근 = val
                     금퇴근 = ""
+                    setNotification()
+                    // 알람 설정
                 }else {
                     금퇴근 = val
                 }
@@ -118,13 +175,60 @@ class ViewController: UIViewController {
         totalWorkingTime()
     }
     
+    func setNotification(){
+        
+        // Swift
+        center.getNotificationSettings { (settings) in
+            if settings.authorizationStatus == .authorized {
+                let content = UNMutableNotificationContent()
+                content.title = "이번주 근무 완료"
+                content.body = "퇴근합시다!!"
+                content.sound = UNNotificationSound.default()
+                
+                if let time = self.totalWorkingTime(isMin:  true){
+                    if let min = Int(time) {
+                        let date = Date(timeIntervalSinceNow: TimeInterval(min * 60)) //초
+                        let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second,], from: date)
+                        
+                        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate,
+                                                                    repeats: false)
+                        // Swift
+                        let identifier = "MAROLocalNotification"
+                        let request = UNNotificationRequest(identifier: identifier,
+                                                            content: content, trigger: trigger)
+                        self.center.add(request, withCompletionHandler: { (error) in
+                            if let error = error {
+                                // Something went wrong
+                            }
+                        })
+                    }
+                }
+            }
+        }
+//        let content = UNMutableNotificationContent()
+//        content.title = NSString.localizedUserNotificationString(forKey: "Wake up!", arguments: nil)
+//        content.body = NSString.localizedUserNotificationString(forKey: "Rise and shine! It's morning time!",
+//                                                                arguments: nil)
+//
+//        // Configure the trigger for a 7am wakeup.
+//        var dateInfo = DateComponents()
+//        dateInfo.hour = 7
+//        dateInfo.minute = 0
+//        let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: false)
+//
+//        // Create the request object.
+//        let request = UNNotificationRequest(identifier: "MorningAlarm", content: content, trigger: trigger)
+    }
+    
     @IBAction func clickVacation(_ sender: Any) {
         let actionSheet = UIAlertController(title: "휴가선택", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
         actionSheet.addAction( UIAlertAction(title: "반차 (+4시간)", style: UIAlertActionStyle.default, handler: { (action) -> Void in
-            self.circularSlider.setValue(self.circularSlider.value - 4, animated: true)
+            self.휴가 = self.휴가 + 4.0
+            self.totalWorkingTime()
         }))
         actionSheet.addAction( UIAlertAction(title: "일차 (+8시간)", style: UIAlertActionStyle.default, handler: { (action) -> Void in
-            self.circularSlider.setValue(self.circularSlider.value - 8, animated: true)
+            self.휴가 = self.휴가 + 8.0
+            self.totalWorkingTime()
         }))
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(actionSheet, animated: true) { () -> Void in}
@@ -148,7 +252,7 @@ class ViewController: UIViewController {
         view.endEditing(true)
     }
     
-    private func totalWorkingTime(){
+    private func totalWorkingTime(isMin:Bool = false) -> String?{
         var totalMin:Float = 40 * 60
         let cal = Calendar(identifier: .gregorian)
         
@@ -184,7 +288,66 @@ class ViewController: UIViewController {
             totalMin = totalMin - Float(comps.minute ?? 0)
         }
         
+        totalMin = totalMin - (휴가 * 60)
+        
         self.circularSlider.setValue(totalMin/60, animated: true)
+        
+        func showHour() -> String{
+            let aString = String(totalMin/60)
+            let chars = aString.characters
+            if let bIndex = chars.index(of: ".") {
+                let nextIndex = chars.index(after: bIndex)
+                return aString[aString.startIndex...nextIndex]
+            }
+            return ""
+        }
+        
+        if !isMin {
+            return showHour()
+        }else {
+            return String(totalMin)
+        }
+    }
+    
+    private func todayWorkingTime() -> String?{
+        var totalMin:Float = 0
+        let cal = Calendar(identifier: .gregorian)
+
+        if 2 == checkDayOfTheWeek(){  // 월
+            if let enter = stringToDate(date: 월출근), let exit =  stringToDate(date: 월퇴근) {
+                let comps = cal.dateComponents([.hour, .minute], from: enter, to: exit)
+                totalMin = Float(comps.minute ?? 0)
+            }
+        }else if 3 == checkDayOfTheWeek(){  // 화
+            if let enter = stringToDate(date: 화출근), let exit =  stringToDate(date: 화퇴근) {
+                let comps = cal.dateComponents([.hour, .minute], from: enter, to: exit)
+                totalMin = Float(comps.minute ?? 0)
+            }
+        }else if 4 == checkDayOfTheWeek(){  // 수
+            if let enter = stringToDate(date: 수출근), let exit =  stringToDate(date: 수퇴근) {
+                let comps = cal.dateComponents([.hour, .minute], from: enter, to: exit)
+                totalMin = Float(comps.minute ?? 0)
+            }
+        }else if 5 == checkDayOfTheWeek(){  // 목
+            if let enter = stringToDate(date: 목출근), let exit =  stringToDate(date: 목퇴근) {
+                let comps = cal.dateComponents([.hour, .minute], from: enter, to: exit)
+                totalMin = Float(comps.minute ?? 0)
+            }
+        }else if 6 == checkDayOfTheWeek(){  // 금
+            if let enter = stringToDate(date: 금출근), let exit =  stringToDate(date: 금퇴근) {
+                let comps = cal.dateComponents([.hour, .minute], from: enter, to: exit)
+                totalMin = Float(comps.minute ?? 0)
+            }
+        }
+        
+        let aString = String(totalMin/60)
+        let chars = aString.characters
+        if let bIndex = chars.index(of: ".") {
+            let nextIndex = chars.index(after: bIndex)
+            return aString[aString.startIndex...nextIndex]
+        }
+        
+        return ""
     }
 }
 
@@ -194,9 +357,10 @@ extension ViewController {
         
         //declare parameter as a dictionary which contains string as key and value combination. considering inputs are valid
         var chatIds:[String] = []
-        chatIds.append( "00000000000000I9" )
+        chatIds.append( "000000000000068d" )
+//        chatIds.append( "00000000000003u4" )
         
-        let parameters = ["chatIds": chatIds, "text": "마로퇴근 09:56 \n 오늘일한시간 : 16시간 \n 이번주잔여시간 : -2시간 \n 넌너무많이일하고있다!! \n", ] as [String : AnyObject]
+        let parameters = ["chatIds": chatIds, "text": msg ] as [String : AnyObject]
         
         //create the url with URL
         let url = URL(string: "https://nexus-mink.ncsoft.com/mink/v1/apis/messages/text/create")! //change the url
@@ -320,145 +484,169 @@ extension ViewController {
     
     var 월출근:String {
         get {
-            if let mon = defaults.object(forKey: "KEY_USER_MON") as? String {
+            if let mon = defaults?.object(forKey: "KEY_USER_MON") as? String {
                 return mon
             }
             return ""
         }
         set {
-            defaults.set(newValue, forKey: "KEY_USER_MON")
+            defaults?.set(newValue, forKey: "KEY_USER_MON")
         }
     }
     
     var 월퇴근:String {
         get {
-            if let mon = defaults.object(forKey: "KEY_USER_MON_EXIT") as? String {
+            if let mon = defaults?.object(forKey: "KEY_USER_MON_EXIT") as? String {
                 return mon
             }
             return ""
         }
         set {
-            defaults.set(newValue, forKey: "KEY_USER_MON_EXIT")
+            defaults?.set(newValue, forKey: "KEY_USER_MON_EXIT")
         }
     }
     
     var 화출근:String {
         get {
-            if let tue = defaults.object(forKey: "KEY_USER_TUE") as? String {
+            if let tue = defaults?.object(forKey: "KEY_USER_TUE") as? String {
                 return tue
             }
             return ""
         }
         set {
-            defaults.set(newValue, forKey: "KEY_USER_TUE")
+            defaults?.set(newValue, forKey: "KEY_USER_TUE")
         }
     }
     
     var 화퇴근:String {
         get {
-            if let tue = defaults.object(forKey: "KEY_USER_TUE_EXIT") as? String {
+            if let tue = defaults?.object(forKey: "KEY_USER_TUE_EXIT") as? String {
                 return tue
             }
             return ""
         }
         set {
-            defaults.set(newValue, forKey: "KEY_USER_TUE_EXIT")
+            defaults?.set(newValue, forKey: "KEY_USER_TUE_EXIT")
         }
     }
     
     var 수출근:String {
         get {
-            if let wed = defaults.object(forKey: "KEY_USER_WED") as? String {
+            if let wed = defaults?.object(forKey: "KEY_USER_WED") as? String {
                 return wed
             }
             return ""
         }
         set {
-            defaults.set(newValue, forKey: "KEY_USER_WED")
+            defaults?.set(newValue, forKey: "KEY_USER_WED")
         }
     }
     
     var 수퇴근:String {
         get {
-            if let wed = defaults.object(forKey: "KEY_USER_WED_EXIT") as? String {
+            if let wed = defaults?.object(forKey: "KEY_USER_WED_EXIT") as? String {
                 return wed
             }
             return ""
         }
         set {
-            defaults.set(newValue, forKey: "KEY_USER_WED_EXIT")
+            defaults?.set(newValue, forKey: "KEY_USER_WED_EXIT")
         }
     }
     
     var 목출근:String {
         get {
-            if let thu = defaults.object(forKey: "KEY_USER_THU") as? String {
+            if let thu = defaults?.object(forKey: "KEY_USER_THU") as? String {
                 return thu
             }
             return ""
         }
         set {
-            defaults.set(newValue, forKey: "KEY_USER_THU")
+            defaults?.set(newValue, forKey: "KEY_USER_THU")
         }
     }
     
     var 목퇴근:String {
         get {
-            if let thu = defaults.object(forKey: "KEY_USER_THU_EXIT") as? String {
+            if let thu = defaults?.object(forKey: "KEY_USER_THU_EXIT") as? String {
                 return thu
             }
             return ""
         }
         set {
-            defaults.set(newValue, forKey: "KEY_USER_THU_EXIT")
+            defaults?.set(newValue, forKey: "KEY_USER_THU_EXIT")
         }
     }
     
     var 금출근:String {
         get {
-            if let fri = defaults.object(forKey: "KEY_USER_FRI") as? String {
+            if let fri = defaults?.object(forKey: "KEY_USER_FRI") as? String {
                 return fri
             }
             return ""
         }
         set {
-            defaults.set(newValue, forKey: "KEY_USER_FRI")
+            defaults?.set(newValue, forKey: "KEY_USER_FRI")
         }
     }
     
     var 금퇴근:String {
         get {
-            if let fri = defaults.object(forKey: "KEY_USER_FRI_EXIT") as? String {
+            if let fri = defaults?.object(forKey: "KEY_USER_FRI_EXIT") as? String {
                 return fri
             }
             return ""
         }
         set {
-            defaults.set(newValue, forKey: "KEY_USER_FRI_EXIT")
+            defaults?.set(newValue, forKey: "KEY_USER_FRI_EXIT")
         }
     }
     
     var 최근기록시간:String {
         get {
-            if let fri = defaults.object(forKey: "KEY_USER_LATEST") as? String {
+            if let fri = defaults?.object(forKey: "KEY_USER_LATEST") as? String {
                 return fri
             }
             return ""
         }
         set {
-            defaults.set(newValue, forKey: "KEY_USER_LATEST")
+            defaults?.set(newValue, forKey: "KEY_USER_LATEST")
         }
     }
     
     var 이름:String {
         get {
-            if let fri = defaults.object(forKey: "KEY_USER_NAME") as? String {
+            if let fri = defaults?.object(forKey: "KEY_USER_NAME") as? String {
                 return fri
             }
             return ""
         }
         set {
-            defaults.set(newValue, forKey: "KEY_USER_NAME")
+            defaults?.set(newValue, forKey: "KEY_USER_NAME")
+        }
+    }
+    
+    var 출근중:Bool {
+        get {
+            if let checkIn = defaults?.object(forKey: "KEY_USER_CHECKIN") as? Bool {
+                return checkIn
+            }
+            return false
+        }
+        set {
+            defaults?.set(newValue, forKey: "KEY_USER_CHECKIN")
+        }
+    }
+    
+    var 휴가:Float {
+        get {
+            if let vacation = defaults?.object(forKey: "KEY_USER_VACATION") as? Float {
+                return vacation
+            }
+            return 0
+        }
+        set {
+            defaults?.set(newValue, forKey: "KEY_USER_VACATION")
         }
     }
     
