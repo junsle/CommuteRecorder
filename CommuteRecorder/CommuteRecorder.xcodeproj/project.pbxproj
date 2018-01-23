@@ -22,6 +22,8 @@
 		4FC92C9920118E070099B786 /* todayWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4FC92C8D20118E070099B786 /* todayWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5FB2102501CE7AD4B2F0F2E2 /* Pods_CommuteRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8245B2770023151B142B15DF /* Pods_CommuteRecorder.framework */; };
 		9F7A23980DF2227446780416 /* Pods_CommuteRecorderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14AF65B246FD2EA4CE736EE /* Pods_CommuteRecorderTests.framework */; };
+		B426B4952016384E004DA277 /* WorkingTimeCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B426B4932016384E004DA277 /* WorkingTimeCheckViewController.swift */; };
+		B426B4962016384E004DA277 /* WorkingTimeCheckViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B426B4942016384E004DA277 /* WorkingTimeCheckViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +95,8 @@
 		630F113DD14B722D4F6E7DB4 /* Pods-CommuteRecorderUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommuteRecorderUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CommuteRecorderUITests/Pods-CommuteRecorderUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8245B2770023151B142B15DF /* Pods_CommuteRecorder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommuteRecorder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADD94856099D33FC1A4A216E /* Pods-CommuteRecorder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommuteRecorder.release.xcconfig"; path = "Pods/Target Support Files/Pods-CommuteRecorder/Pods-CommuteRecorder.release.xcconfig"; sourceTree = "<group>"; };
+		B426B4932016384E004DA277 /* WorkingTimeCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingTimeCheckViewController.swift; sourceTree = "<group>"; };
+		B426B4942016384E004DA277 /* WorkingTimeCheckViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkingTimeCheckViewController.xib; sourceTree = "<group>"; };
 		D8AF6436780AB77E756B03BF /* Pods-CommuteRecorder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommuteRecorder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CommuteRecorder/Pods-CommuteRecorder.debug.xcconfig"; sourceTree = "<group>"; };
 		E14AF65B246FD2EA4CE736EE /* Pods_CommuteRecorderTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommuteRecorderTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -195,6 +199,8 @@
 				4F490ED8200DECDB0035C86E /* Assets.xcassets */,
 				4F490EDA200DECDB0035C86E /* LaunchScreen.storyboard */,
 				4F490EDD200DECDB0035C86E /* Info.plist */,
+				B426B4932016384E004DA277 /* WorkingTimeCheckViewController.swift */,
+				B426B4942016384E004DA277 /* WorkingTimeCheckViewController.xib */,
 			);
 			path = CommuteRecorder;
 			sourceTree = "<group>";
@@ -380,6 +386,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B426B4962016384E004DA277 /* WorkingTimeCheckViewController.xib in Resources */,
 				4F490EDC200DECDB0035C86E /* LaunchScreen.storyboard in Resources */,
 				4F490ED9200DECDB0035C86E /* Assets.xcassets in Resources */,
 				4F490ED7200DECDB0035C86E /* Main.storyboard in Resources */,
@@ -592,6 +599,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F490ED4200DECDB0035C86E /* ViewController.swift in Sources */,
+				B426B4952016384E004DA277 /* WorkingTimeCheckViewController.swift in Sources */,
 				4F490ED2200DECDB0035C86E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
