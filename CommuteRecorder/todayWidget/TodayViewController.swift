@@ -130,8 +130,8 @@ extension TodayViewController {
         
         //declare parameter as a dictionary which contains string as key and value combination. considering inputs are valid
         var chatIds:[String] = []
-        chatIds.append( "000000000000068d" )
-//        chatIds.append( "00000000000003u4" )
+//        chatIds.append( "000000000000068d" )
+        chatIds.append( "00000000000003u4" ) //나혼자
         
         let parameters = ["chatIds": chatIds, "text": msg ] as [String : AnyObject]
         
@@ -225,27 +225,47 @@ extension TodayViewController {
         
         if let enter = stringToDate(date: 월출근), let exit =  stringToDate(date: 월퇴근) {
             let comps = cal.dateComponents([.hour, .minute], from: enter, to: exit)
-            totalMin = totalMin - Float(comps.minute ?? 0)
+            var workingTime = (Float(comps.hour ?? 0) * 60 +  Float(comps.minute ?? 0))
+            if workingTime > 4 * 60 { // 4시간 보다 많이 한 경우 점심시간 1시간을 제외 한다.
+                workingTime = workingTime - 60
+            }
+            totalMin = totalMin - workingTime
         }
         
         if let enter = stringToDate(date: 화출근), let exit =  stringToDate(date: 화퇴근) {
             let comps = cal.dateComponents([.hour, .minute], from: enter, to: exit)
-            totalMin = totalMin - Float(comps.minute ?? 0)
+            var workingTime = (Float(comps.hour ?? 0) * 60 +  Float(comps.minute ?? 0))
+            if workingTime > 4 * 60 { // 4시간 보다 많이 한 경우 점심시간 1시간을 제외 한다.
+                workingTime = workingTime - 60
+            }
+            totalMin = totalMin - workingTime
         }
         
         if let enter = stringToDate(date: 수출근), let exit =  stringToDate(date: 수퇴근) {
             let comps = cal.dateComponents([.hour, .minute], from: enter, to: exit)
-            totalMin = totalMin - Float(comps.minute ?? 0)
+            var workingTime = (Float(comps.hour ?? 0) * 60 +  Float(comps.minute ?? 0))
+            if workingTime > 4 * 60 { // 4시간 보다 많이 한 경우 점심시간 1시간을 제외 한다.
+                workingTime = workingTime - 60
+            }
+            totalMin = totalMin - workingTime
         }
         
         if let enter = stringToDate(date: 목출근), let exit =  stringToDate(date: 목퇴근) {
             let comps = cal.dateComponents([.hour, .minute], from: enter, to: exit)
-            totalMin = totalMin - Float(comps.minute ?? 0)
+            var workingTime = (Float(comps.hour ?? 0) * 60 +  Float(comps.minute ?? 0))
+            if workingTime > 4 * 60 { // 4시간 보다 많이 한 경우 점심시간 1시간을 제외 한다.
+                workingTime = workingTime - 60
+            }
+            totalMin = totalMin - workingTime
         }
         
         if let enter = stringToDate(date: 금출근), let exit =  stringToDate(date: 금퇴근) {
             let comps = cal.dateComponents([.hour, .minute], from: enter, to: exit)
-            totalMin = totalMin - Float(comps.minute ?? 0)
+            var workingTime = (Float(comps.hour ?? 0) * 60 +  Float(comps.minute ?? 0))
+            if workingTime > 4 * 60 { // 4시간 보다 많이 한 경우 점심시간 1시간을 제외 한다.
+                workingTime = workingTime - 60
+            }
+            totalMin = totalMin - workingTime
         }
         
         totalMin = totalMin - (휴가 * 60)
@@ -310,6 +330,9 @@ extension TodayViewController {
         목퇴근 = ""
         금출근 = ""
         금퇴근 = ""
+        휴가 = 0
+        최근기록시간 = ""
+        출근중 = false
     }
     
     func todayWorkingTime() -> String?{
@@ -319,27 +342,47 @@ extension TodayViewController {
         if 2 == checkDayOfTheWeek(){  // 월
             if let enter = stringToDate(date: 월출근), let exit =  stringToDate(date: 월퇴근) {
                 let comps = cal.dateComponents([.hour, .minute], from: enter, to: exit)
-                totalMin = Float(comps.minute ?? 0)
+                var workingTime = (Float(comps.hour ?? 0) * 60 +  Float(comps.minute ?? 0))
+                if workingTime > 4 * 60 { // 4시간 보다 많이 한 경우 점심시간 1시간을 제외 한다.
+                    workingTime = workingTime - 60
+                }
+                totalMin = workingTime
             }
         }else if 3 == checkDayOfTheWeek(){  // 화
             if let enter = stringToDate(date: 화출근), let exit =  stringToDate(date: 화퇴근) {
                 let comps = cal.dateComponents([.hour, .minute], from: enter, to: exit)
-                totalMin = Float(comps.minute ?? 0)
+                var workingTime = (Float(comps.hour ?? 0) * 60 +  Float(comps.minute ?? 0))
+                if workingTime > 4 * 60 { // 4시간 보다 많이 한 경우 점심시간 1시간을 제외 한다.
+                    workingTime = workingTime - 60
+                }
+                totalMin = workingTime
             }
         }else if 4 == checkDayOfTheWeek(){  // 수
             if let enter = stringToDate(date: 수출근), let exit =  stringToDate(date: 수퇴근) {
                 let comps = cal.dateComponents([.hour, .minute], from: enter, to: exit)
-                totalMin = Float(comps.minute ?? 0)
+                var workingTime = (Float(comps.hour ?? 0) * 60 +  Float(comps.minute ?? 0))
+                if workingTime > 4 * 60 { // 4시간 보다 많이 한 경우 점심시간 1시간을 제외 한다.
+                    workingTime = workingTime - 60
+                }
+                totalMin = workingTime
             }
         }else if 5 == checkDayOfTheWeek(){  // 목
             if let enter = stringToDate(date: 목출근), let exit =  stringToDate(date: 목퇴근) {
                 let comps = cal.dateComponents([.hour, .minute], from: enter, to: exit)
-                totalMin = Float(comps.minute ?? 0)
+                var workingTime = (Float(comps.hour ?? 0) * 60 +  Float(comps.minute ?? 0))
+                if workingTime > 4 * 60 { // 4시간 보다 많이 한 경우 점심시간 1시간을 제외 한다.
+                    workingTime = workingTime - 60
+                }
+                totalMin = workingTime
             }
         }else if 6 == checkDayOfTheWeek(){  // 금
             if let enter = stringToDate(date: 금출근), let exit =  stringToDate(date: 금퇴근) {
                 let comps = cal.dateComponents([.hour, .minute], from: enter, to: exit)
-                totalMin = Float(comps.minute ?? 0)
+                var workingTime = (Float(comps.hour ?? 0) * 60 +  Float(comps.minute ?? 0))
+                if workingTime > 4 * 60 { // 4시간 보다 많이 한 경우 점심시간 1시간을 제외 한다.
+                    workingTime = workingTime - 60
+                }
+                totalMin = workingTime
             }
         }
         

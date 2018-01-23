@@ -19,6 +19,7 @@
                 <outlet property="목퇴근입력" destination="jSY-cu-mBv" id="ahl-1i-GX9"/>
                 <outlet property="수출근입력" destination="xqg-Bb-qc0" id="QSt-yX-DXl"/>
                 <outlet property="수퇴근입력" destination="jic-2R-VIm" id="zLS-UK-v22"/>
+                <outlet property="월출근입력" destination="FMR-AB-y3W" id="uPh-Wh-6WF"/>
                 <outlet property="월퇴근입력" destination="wgi-hN-4jw" id="HPP-FF-v0C"/>
                 <outlet property="화출근입력" destination="Kq2-q4-baQ" id="IHh-zA-KzE"/>
                 <outlet property="화퇴근입력" destination="avR-ja-77j" id="uTG-a3-Xif"/>
@@ -33,7 +34,7 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wHi-cV-POm">
                     <rect key="frame" x="60" y="40" width="117.5" height="347"/>
                     <subviews>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="16:30" borderStyle="roundedRect" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FMR-AB-y3W">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FMR-AB-y3W">
                             <rect key="frame" x="0.0" y="0.0" width="117.5" height="49.5"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>

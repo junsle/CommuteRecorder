@@ -15,6 +15,8 @@
 		4F490EDC200DECDB0035C86E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F490EDA200DECDB0035C86E /* LaunchScreen.storyboard */; };
 		4F490EE7200DECDB0035C86E /* CommuteRecorderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F490EE6200DECDB0035C86E /* CommuteRecorderTests.swift */; };
 		4F490EF2200DECDB0035C86E /* CommuteRecorderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F490EF1200DECDB0035C86E /* CommuteRecorderUITests.swift */; };
+		4FA540502016E3CB00B5A289 /* WorkingDataManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA5404F2016E3CB00B5A289 /* WorkingDataManage.swift */; };
+		4FA540522016E65000B5A289 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA540512016E65000B5A289 /* Util.swift */; };
 		4FC47F19200F37E300522036 /* CircularSlider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FC47F1A200F37E300522036 /* CircularSlider.framework */; };
 		4FC92C8F20118E070099B786 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FC92C8E20118E070099B786 /* NotificationCenter.framework */; };
 		4FC92C9220118E070099B786 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC92C9120118E070099B786 /* TodayViewController.swift */; };
@@ -79,6 +81,8 @@
 		4F490EED200DECDB0035C86E /* CommuteRecorderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommuteRecorderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F490EF1200DECDB0035C86E /* CommuteRecorderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteRecorderUITests.swift; sourceTree = "<group>"; };
 		4F490EF3200DECDB0035C86E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4FA5404F2016E3CB00B5A289 /* WorkingDataManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingDataManage.swift; sourceTree = "<group>"; };
+		4FA540512016E65000B5A289 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		4FBD14784E041FABBBE0D22F /* Pods_CommuteRecorderUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommuteRecorderUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FC47F1A200F37E300522036 /* CircularSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CircularSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FC47F1D200F39E800522036 /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -201,6 +205,8 @@
 				4F490EDD200DECDB0035C86E /* Info.plist */,
 				B426B4932016384E004DA277 /* WorkingTimeCheckViewController.swift */,
 				B426B4942016384E004DA277 /* WorkingTimeCheckViewController.xib */,
+				4FA5404F2016E3CB00B5A289 /* WorkingDataManage.swift */,
+				4FA540512016E65000B5A289 /* Util.swift */,
 			);
 			path = CommuteRecorder;
 			sourceTree = "<group>";
@@ -600,6 +606,8 @@
 			files = (
 				4F490ED4200DECDB0035C86E /* ViewController.swift in Sources */,
 				B426B4952016384E004DA277 /* WorkingTimeCheckViewController.swift in Sources */,
+				4FA540522016E65000B5A289 /* Util.swift in Sources */,
+				4FA540502016E3CB00B5A289 /* WorkingDataManage.swift in Sources */,
 				4F490ED2200DECDB0035C86E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

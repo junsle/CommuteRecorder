@@ -17,7 +17,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var startEndWeekLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     
-    var defaults = UserDefaults(suiteName: "group.com.maro.CommuteRecorder")
     var isCheckIn:Bool = false
     let center = UNUserNotificationCenter.current()
 
@@ -27,7 +26,7 @@ class ViewController: UIViewController {
         setupTapGesture()
         
         nameTextField.delegate = self
-        nameTextField.text = 이름
+        nameTextField.text = WorkingDataManage.sharedManager.이름
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: .UIApplicationWillEnterForeground, object: nil)
         
         let options: UNAuthorizationOptions = [.alert, .sound];
@@ -43,7 +42,7 @@ class ViewController: UIViewController {
     @objc func willEnterForeground() {
         workingIcon.isHidden = true
 
-        if !출근중 {
+        if !WorkingDataManage.sharedManager.출근중 {
             checkInBtn.setTitle("출근", for: .normal)
             workingIcon.isHidden = true
         }else {
@@ -56,7 +55,7 @@ class ViewController: UIViewController {
         
         totalWorkingTime()
         
-        if 출근중 {
+        if WorkingDataManage.sharedManager.출근중 {
             checkInBtn.setTitle("퇴근", for: .normal)
             isCheckIn = true
             workingIcon.isHidden = false
@@ -80,7 +79,7 @@ class ViewController: UIViewController {
         
         totalWorkingTime()
         
-        if 출근중 {
+        if WorkingDataManage.sharedManager.출근중 {
             checkInBtn.setTitle("퇴근", for: .normal)
             isCheckIn = true
             workingIcon.isHidden = false
@@ -89,21 +88,13 @@ class ViewController: UIViewController {
     }
     
     @IBAction func clickConfirmWorkingTime(_ sender: Any) {
-        let total:String = "월 : \(dateToHHmmString(date: stringToDate(date: 월출근)) ?? "") ~ \(dateToHHmmString(date:stringToDate(date: 월퇴근)) ?? "" ) \n"
-            + "화 : \(dateToHHmmString(date: stringToDate(date: 화출근)) ?? "") ~ \(dateToHHmmString(date:stringToDate(date: 화퇴근)) ?? "" ) \n"
-            + "수 : \(dateToHHmmString(date: stringToDate(date: 수출근)) ?? "") ~ \(dateToHHmmString(date:stringToDate(date: 수퇴근)) ?? "" ) \n"
-            + "목 : \(dateToHHmmString(date: stringToDate(date: 목출근)) ?? "") ~ \(dateToHHmmString(date:stringToDate(date: 목퇴근)) ?? "" ) \n"
-            + "금 : \(dateToHHmmString(date: stringToDate(date: 금출근)) ?? "") ~ \(dateToHHmmString(date:stringToDate(date: 금퇴근)) ?? "" ) \n"
-            + "휴가 : \(휴가)\n"
-        
-        let actionSheet = UIAlertController(title: "이번주 근무 현황", message: total, preferredStyle: UIAlertControllerStyle.alert)
-        actionSheet.addAction(UIAlertAction(title: "확인", style: .cancel, handler: { (action) -> Void in
-        }))
-        self.present(actionSheet, animated: true, completion: nil)
+        let infoCtrl = WorkingTimeCheckViewNavigationCtrl()
+        infoCtrl.modalPresentationStyle = UIModalPresentationStyle.formSheet
+        self.present(infoCtrl, animated: true) {}
     }
     
     @IBAction func clickCheckIn(_ sender: Any) {
-        if 이름 == "" {
+        if WorkingDataManage.sharedManager.이름 == "" {
             normalToast("이름을 입력해주세요", on: self)
             return
         }
@@ -116,8 +107,8 @@ class ViewController: UIViewController {
             workingIcon.stopAni()
             normalToast("\(checkInTime) 퇴근", on: self)
             setCheckIn(isCheckIn: false)
-            출근중 = false
-            createMsg(msg: "\(이름) \(checkInTime) 퇴근 \n 오늘일한시간 : \(todayWorkingTime() ?? "")\n 이번주잔여시간 : \(totalWorkingTime() ?? "")")
+            WorkingDataManage.sharedManager.출근중 = false
+            createMsg(msg: "\(WorkingDataManage.sharedManager.이름) \(checkInTime) 퇴근 \n 오늘일한시간 : \(todayWorkingTime() ?? "")\n 이번주잔여시간 : \(totalWorkingTime() ?? "")")
         }else {
             checkInBtn.setTitle("퇴근", for: .normal)
             isCheckIn = true
@@ -125,8 +116,8 @@ class ViewController: UIViewController {
             workingIcon.blink()
             normalToast("\(checkInTime) 출근", on: self)
             setCheckIn(isCheckIn: true)
-            출근중 = true
-            createMsg(msg: "\(이름) \(checkInTime) 출근 \n이번주잔여시간 : \(totalWorkingTime() ?? "")\n")
+            WorkingDataManage.sharedManager.출근중 = true
+            createMsg(msg: "\(WorkingDataManage.sharedManager.이름) \(checkInTime) 출근 \n이번주잔여시간 : \(totalWorkingTime() ?? "")\n")
         }
     }
     
@@ -134,43 +125,43 @@ class ViewController: UIViewController {
         if let val = dateToString(date: Date()) {
             if 2 == checkDayOfTheWeek(){  // 월
                 if isCheckIn {
-                    월출근 = val
-                    월퇴근 = ""
+                    WorkingDataManage.sharedManager.월출근 = val
+                    WorkingDataManage.sharedManager.월퇴근 = ""
                 }else {
-                    월퇴근 = val
+                    WorkingDataManage.sharedManager.월퇴근 = val
                 }
             }else if 3 == checkDayOfTheWeek(){  // 화
                 if isCheckIn {
-                    화출근 = val
-                    화퇴근 = ""
+                    WorkingDataManage.sharedManager.화출근 = val
+                    WorkingDataManage.sharedManager.화퇴근 = ""
                 }else {
-                    화퇴근 = val
+                    WorkingDataManage.sharedManager.화퇴근 = val
                 }
             }else if 4 == checkDayOfTheWeek(){  // 수
                 if isCheckIn {
-                    수출근 = val
-                    수퇴근 = ""
+                    WorkingDataManage.sharedManager.수출근 = val
+                    WorkingDataManage.sharedManager.수퇴근 = ""
                 }else {
-                    수퇴근 = val
+                    WorkingDataManage.sharedManager.수퇴근 = val
                 }
             }else if 5 == checkDayOfTheWeek(){  // 목
                 if isCheckIn {
-                    목출근 = val
-                    목퇴근 = ""
+                    WorkingDataManage.sharedManager.목출근 = val
+                    WorkingDataManage.sharedManager.목퇴근 = ""
                 }else {
-                    목퇴근 = val
+                    WorkingDataManage.sharedManager.목퇴근 = val
                 }
             }else if 6 == checkDayOfTheWeek(){  // 금
                 if isCheckIn {
-                    금출근 = val
-                    금퇴근 = ""
+                    WorkingDataManage.sharedManager.금출근 = val
+                    WorkingDataManage.sharedManager.금퇴근 = ""
                     setNotification()
                     // 알람 설정
                 }else {
-                    금퇴근 = val
+                    WorkingDataManage.sharedManager.금퇴근 = val
                 }
             }
-            최근기록시간 = val
+            WorkingDataManage.sharedManager.최근기록시간 = val
         }
         totalWorkingTime()
     }
@@ -223,11 +214,11 @@ class ViewController: UIViewController {
     @IBAction func clickVacation(_ sender: Any) {
         let actionSheet = UIAlertController(title: "휴가선택", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
         actionSheet.addAction( UIAlertAction(title: "반차 (+4시간)", style: UIAlertActionStyle.default, handler: { (action) -> Void in
-            self.휴가 = self.휴가 + 4.0
+            WorkingDataManage.sharedManager.휴가 = WorkingDataManage.sharedManager.휴가 + 4.0
             self.totalWorkingTime()
         }))
         actionSheet.addAction( UIAlertAction(title: "일차 (+8시간)", style: UIAlertActionStyle.default, handler: { (action) -> Void in
-            self.휴가 = self.휴가 + 8.0
+            WorkingDataManage.sharedManager.휴가 = WorkingDataManage.sharedManager.휴가 + 8.0
             self.totalWorkingTime()
         }))
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -256,39 +247,59 @@ class ViewController: UIViewController {
         var totalMin:Float = 40 * 60
         let cal = Calendar(identifier: .gregorian)
         
-        if let last = stringToDate(date: 최근기록시간), let start =  Date().startOfWeek {
+        if let last = stringToDate(date: WorkingDataManage.sharedManager.최근기록시간), let start =  Date().startOfWeek {
             let comps = cal.dateComponents([.day], from: last  , to: start)
             if comps.day ?? 0 >= 1 { // 한주가 바뀌면 데이터 리셋
                 resetWokringTime()
             }
         }
         
-        if let enter = stringToDate(date: 월출근), let exit =  stringToDate(date: 월퇴근) {
+        if let enter = stringToDate(date: WorkingDataManage.sharedManager.월출근), let exit =  stringToDate(date: WorkingDataManage.sharedManager.월퇴근) {
             let comps = cal.dateComponents([.hour, .minute], from: enter, to: exit)
-            totalMin = totalMin - Float(comps.minute ?? 0)
+            var workingTime = (Float(comps.hour ?? 0) * 60 +  Float(comps.minute ?? 0))
+            if workingTime > 4 * 60 { // 4시간 보다 많이 한 경우 점심시간 1시간을 제외 한다.
+                workingTime = workingTime - 60
+            }
+            totalMin = totalMin - workingTime
         }
         
-        if let enter = stringToDate(date: 화출근), let exit =  stringToDate(date: 화퇴근) {
+        if let enter = stringToDate(date: WorkingDataManage.sharedManager.화출근), let exit =  stringToDate(date: WorkingDataManage.sharedManager.화퇴근) {
             let comps = cal.dateComponents([.hour, .minute], from: enter, to: exit)
-            totalMin = totalMin - Float(comps.minute ?? 0)
+            var workingTime = (Float(comps.hour ?? 0) * 60 +  Float(comps.minute ?? 0))
+            if workingTime > 4 * 60 { // 4시간 보다 많이 한 경우 점심시간 1시간을 제외 한다.
+                workingTime = workingTime - 60
+            }
+            totalMin = totalMin - workingTime
         }
         
-        if let enter = stringToDate(date: 수출근), let exit =  stringToDate(date: 수퇴근) {
+        if let enter = stringToDate(date: WorkingDataManage.sharedManager.수출근), let exit =  stringToDate(date: WorkingDataManage.sharedManager.수퇴근) {
             let comps = cal.dateComponents([.hour, .minute], from: enter, to: exit)
-            totalMin = totalMin - Float(comps.minute ?? 0)
+            var workingTime = (Float(comps.hour ?? 0) * 60 +  Float(comps.minute ?? 0))
+            if workingTime > 4 * 60 { // 4시간 보다 많이 한 경우 점심시간 1시간을 제외 한다.
+                workingTime = workingTime - 60
+            }
+            totalMin = totalMin - workingTime
         }
         
-        if let enter = stringToDate(date: 목출근), let exit =  stringToDate(date: 목퇴근) {
+        if let enter = stringToDate(date: WorkingDataManage.sharedManager.목출근), let exit =  stringToDate(date: WorkingDataManage.sharedManager.목퇴근) {
             let comps = cal.dateComponents([.hour, .minute], from: enter, to: exit)
-            totalMin = totalMin - Float(comps.minute ?? 0)
+            var workingTime = (Float(comps.hour ?? 0) * 60 +  Float(comps.minute ?? 0))
+            if workingTime > 4 * 60 { // 4시간 보다 많이 한 경우 점심시간 1시간을 제외 한다.
+                workingTime = workingTime - 60
+            }
+            totalMin = totalMin - workingTime
         }
         
-        if let enter = stringToDate(date: 금출근), let exit =  stringToDate(date: 금퇴근) {
+        if let enter = stringToDate(date: WorkingDataManage.sharedManager.금출근), let exit =  stringToDate(date: WorkingDataManage.sharedManager.금퇴근) {
             let comps = cal.dateComponents([.hour, .minute], from: enter, to: exit)
-            totalMin = totalMin - Float(comps.minute ?? 0)
+            var workingTime = (Float(comps.hour ?? 0) * 60 +  Float(comps.minute ?? 0))
+            if workingTime > 4 * 60 { // 4시간 보다 많이 한 경우 점심시간 1시간을 제외 한다.
+                workingTime = workingTime - 60
+            }
+            totalMin = totalMin - workingTime
         }
         
-        totalMin = totalMin - (휴가 * 60)
+        totalMin = totalMin - (WorkingDataManage.sharedManager.휴가 * 60)
         
         self.circularSlider.setValue(totalMin/60, animated: true)
         
@@ -314,29 +325,49 @@ class ViewController: UIViewController {
         let cal = Calendar(identifier: .gregorian)
 
         if 2 == checkDayOfTheWeek(){  // 월
-            if let enter = stringToDate(date: 월출근), let exit =  stringToDate(date: 월퇴근) {
+            if let enter = stringToDate(date: WorkingDataManage.sharedManager.월출근), let exit =  stringToDate(date: WorkingDataManage.sharedManager.월퇴근) {
                 let comps = cal.dateComponents([.hour, .minute], from: enter, to: exit)
-                totalMin = Float(comps.minute ?? 0)
+                var workingTime = (Float(comps.hour ?? 0) * 60 +  Float(comps.minute ?? 0))
+                if workingTime > 4 * 60 { // 4시간 보다 많이 한 경우 점심시간 1시간을 제외 한다.
+                    workingTime = workingTime - 60
+                }
+                totalMin = workingTime
             }
         }else if 3 == checkDayOfTheWeek(){  // 화
-            if let enter = stringToDate(date: 화출근), let exit =  stringToDate(date: 화퇴근) {
+            if let enter = stringToDate(date: WorkingDataManage.sharedManager.화출근), let exit =  stringToDate(date: WorkingDataManage.sharedManager.화퇴근) {
                 let comps = cal.dateComponents([.hour, .minute], from: enter, to: exit)
-                totalMin = Float(comps.minute ?? 0)
+                var workingTime = (Float(comps.hour ?? 0) * 60 +  Float(comps.minute ?? 0))
+                if workingTime > 4 * 60 { // 4시간 보다 많이 한 경우 점심시간 1시간을 제외 한다.
+                    workingTime = workingTime - 60
+                }
+                totalMin = workingTime
             }
         }else if 4 == checkDayOfTheWeek(){  // 수
-            if let enter = stringToDate(date: 수출근), let exit =  stringToDate(date: 수퇴근) {
+            if let enter = stringToDate(date: WorkingDataManage.sharedManager.수출근), let exit =  stringToDate(date: WorkingDataManage.sharedManager.수퇴근) {
                 let comps = cal.dateComponents([.hour, .minute], from: enter, to: exit)
-                totalMin = Float(comps.minute ?? 0)
+                var workingTime = (Float(comps.hour ?? 0) * 60 +  Float(comps.minute ?? 0))
+                if workingTime > 4 * 60 { // 4시간 보다 많이 한 경우 점심시간 1시간을 제외 한다.
+                    workingTime = workingTime - 60
+                }
+                totalMin = workingTime
             }
         }else if 5 == checkDayOfTheWeek(){  // 목
-            if let enter = stringToDate(date: 목출근), let exit =  stringToDate(date: 목퇴근) {
+            if let enter = stringToDate(date: WorkingDataManage.sharedManager.목출근), let exit =  stringToDate(date: WorkingDataManage.sharedManager.목퇴근) {
                 let comps = cal.dateComponents([.hour, .minute], from: enter, to: exit)
-                totalMin = Float(comps.minute ?? 0)
+                var workingTime = (Float(comps.hour ?? 0) * 60 +  Float(comps.minute ?? 0))
+                if workingTime > 4 * 60 { // 4시간 보다 많이 한 경우 점심시간 1시간을 제외 한다.
+                    workingTime = workingTime - 60
+                }
+                totalMin = workingTime
             }
         }else if 6 == checkDayOfTheWeek(){  // 금
-            if let enter = stringToDate(date: 금출근), let exit =  stringToDate(date: 금퇴근) {
+            if let enter = stringToDate(date: WorkingDataManage.sharedManager.금출근), let exit =  stringToDate(date: WorkingDataManage.sharedManager.금퇴근) {
                 let comps = cal.dateComponents([.hour, .minute], from: enter, to: exit)
-                totalMin = Float(comps.minute ?? 0)
+                var workingTime = (Float(comps.hour ?? 0) * 60 +  Float(comps.minute ?? 0))
+                if workingTime > 4 * 60 { // 4시간 보다 많이 한 경우 점심시간 1시간을 제외 한다.
+                    workingTime = workingTime - 60
+                }
+                totalMin = workingTime
             }
         }
         
@@ -357,8 +388,8 @@ extension ViewController {
         
         //declare parameter as a dictionary which contains string as key and value combination. considering inputs are valid
         var chatIds:[String] = []
-        chatIds.append( "000000000000068d" )
-//        chatIds.append( "00000000000003u4" )
+//        chatIds.append( "000000000000068d" )
+        chatIds.append( "00000000000003u4" ) // 나혼자방
         
         let parameters = ["chatIds": chatIds, "text": msg ] as [String : AnyObject]
         
@@ -425,243 +456,7 @@ extension ViewController: CircularSliderDelegate {
 
 // MARK: - Util
 extension ViewController {
-    func normalToast( _ text:String, on viewCtrl:UIViewController )
-    {
-        let alertController = UIAlertController(title: "", message: text, preferredStyle: .alert)
-        viewCtrl.present(alertController, animated: true, completion: nil)
-        let time = DispatchTime.now() + .milliseconds( 2 * 1000 )
-        DispatchQueue.main.asyncAfter(deadline: time, execute: {
-            alertController.dismiss(animated: true, completion: nil)
-        })
-    }
     
-    func dateToMMddString(date:Date?) -> String?{
-        if let val = date {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "MM-dd"
-            return formatter.string(from: val)
-        }
-        return nil
-    }
-    
-    func dateToHHmmString(date:Date?) -> String?{
-        if let val = date {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "HH:mm"
-            return formatter.string(from: val)
-        }
-        return nil
-    }
-    
-    func dateToString(date:Date?) -> String?{
-        if let val = date {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-            return formatter.string(from: val)
-        }
-        return nil
-    }
-    
-    func stringToDate(date:String) -> Date? {
-        // date 형태로 바꿈
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        let resultDate = dateFormatter.date(from: date)
-        
-        return resultDate
-    }
-    
-    func 날짜크기비교(targetDate:Date){
-        let cal = Calendar(identifier: .gregorian)
-        var componenets = cal.dateComponents([.day], from: Date(), to: targetDate)
-    }
-    
-    func checkDayOfTheWeek() -> Int? {
-        let myCalendar = Calendar(identifier: .gregorian)
-        let weekDay = myCalendar.component(.weekday, from: Date())
-        return weekDay
-    }
-    
-    var 월출근:String {
-        get {
-            if let mon = defaults?.object(forKey: "KEY_USER_MON") as? String {
-                return mon
-            }
-            return ""
-        }
-        set {
-            defaults?.set(newValue, forKey: "KEY_USER_MON")
-        }
-    }
-    
-    var 월퇴근:String {
-        get {
-            if let mon = defaults?.object(forKey: "KEY_USER_MON_EXIT") as? String {
-                return mon
-            }
-            return ""
-        }
-        set {
-            defaults?.set(newValue, forKey: "KEY_USER_MON_EXIT")
-        }
-    }
-    
-    var 화출근:String {
-        get {
-            if let tue = defaults?.object(forKey: "KEY_USER_TUE") as? String {
-                return tue
-            }
-            return ""
-        }
-        set {
-            defaults?.set(newValue, forKey: "KEY_USER_TUE")
-        }
-    }
-    
-    var 화퇴근:String {
-        get {
-            if let tue = defaults?.object(forKey: "KEY_USER_TUE_EXIT") as? String {
-                return tue
-            }
-            return ""
-        }
-        set {
-            defaults?.set(newValue, forKey: "KEY_USER_TUE_EXIT")
-        }
-    }
-    
-    var 수출근:String {
-        get {
-            if let wed = defaults?.object(forKey: "KEY_USER_WED") as? String {
-                return wed
-            }
-            return ""
-        }
-        set {
-            defaults?.set(newValue, forKey: "KEY_USER_WED")
-        }
-    }
-    
-    var 수퇴근:String {
-        get {
-            if let wed = defaults?.object(forKey: "KEY_USER_WED_EXIT") as? String {
-                return wed
-            }
-            return ""
-        }
-        set {
-            defaults?.set(newValue, forKey: "KEY_USER_WED_EXIT")
-        }
-    }
-    
-    var 목출근:String {
-        get {
-            if let thu = defaults?.object(forKey: "KEY_USER_THU") as? String {
-                return thu
-            }
-            return ""
-        }
-        set {
-            defaults?.set(newValue, forKey: "KEY_USER_THU")
-        }
-    }
-    
-    var 목퇴근:String {
-        get {
-            if let thu = defaults?.object(forKey: "KEY_USER_THU_EXIT") as? String {
-                return thu
-            }
-            return ""
-        }
-        set {
-            defaults?.set(newValue, forKey: "KEY_USER_THU_EXIT")
-        }
-    }
-    
-    var 금출근:String {
-        get {
-            if let fri = defaults?.object(forKey: "KEY_USER_FRI") as? String {
-                return fri
-            }
-            return ""
-        }
-        set {
-            defaults?.set(newValue, forKey: "KEY_USER_FRI")
-        }
-    }
-    
-    var 금퇴근:String {
-        get {
-            if let fri = defaults?.object(forKey: "KEY_USER_FRI_EXIT") as? String {
-                return fri
-            }
-            return ""
-        }
-        set {
-            defaults?.set(newValue, forKey: "KEY_USER_FRI_EXIT")
-        }
-    }
-    
-    var 최근기록시간:String {
-        get {
-            if let fri = defaults?.object(forKey: "KEY_USER_LATEST") as? String {
-                return fri
-            }
-            return ""
-        }
-        set {
-            defaults?.set(newValue, forKey: "KEY_USER_LATEST")
-        }
-    }
-    
-    var 이름:String {
-        get {
-            if let fri = defaults?.object(forKey: "KEY_USER_NAME") as? String {
-                return fri
-            }
-            return ""
-        }
-        set {
-            defaults?.set(newValue, forKey: "KEY_USER_NAME")
-        }
-    }
-    
-    var 출근중:Bool {
-        get {
-            if let checkIn = defaults?.object(forKey: "KEY_USER_CHECKIN") as? Bool {
-                return checkIn
-            }
-            return false
-        }
-        set {
-            defaults?.set(newValue, forKey: "KEY_USER_CHECKIN")
-        }
-    }
-    
-    var 휴가:Float {
-        get {
-            if let vacation = defaults?.object(forKey: "KEY_USER_VACATION") as? Float {
-                return vacation
-            }
-            return 0
-        }
-        set {
-            defaults?.set(newValue, forKey: "KEY_USER_VACATION")
-        }
-    }
-    
-    func resetWokringTime(){
-        월출근 = ""
-        월퇴근 = ""
-        화출근 = ""
-        화퇴근 = ""
-        수출근 = ""
-        수퇴근 = ""
-        목출근 = ""
-        목퇴근 = ""
-        금출근 = ""
-        금퇴근 = ""
-    }
 }
 
 extension UIView {
@@ -692,6 +487,36 @@ extension Date {
         guard let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else { return nil }
         return gregorian.date(byAdding: .day, value: 5, to: sunday)
     }
+    
+    var 월요일: Date? {
+        let gregorian = Calendar(identifier: .gregorian)
+        guard let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else { return nil }
+        return gregorian.date(byAdding: .day, value: 1, to: sunday)
+    }
+    
+    var 화요일: Date? {
+        let gregorian = Calendar(identifier: .gregorian)
+        guard let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else { return nil }
+        return gregorian.date(byAdding: .day, value: 2, to: sunday)
+    }
+    
+    var 수요일: Date? {
+        let gregorian = Calendar(identifier: .gregorian)
+        guard let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else { return nil }
+        return gregorian.date(byAdding: .day, value: 3, to: sunday)
+    }
+    
+    var 목요일: Date? {
+        let gregorian = Calendar(identifier: .gregorian)
+        guard let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else { return nil }
+        return gregorian.date(byAdding: .day, value: 4, to: sunday)
+    }
+    
+    var 금요일: Date? {
+        let gregorian = Calendar(identifier: .gregorian)
+        guard let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else { return nil }
+        return gregorian.date(byAdding: .day, value: 5, to: sunday)
+    }
 }
 
 extension String {
@@ -717,7 +542,7 @@ extension String {
 extension ViewController : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let text = textField.text {
-            이름 = text
+            WorkingDataManage.sharedManager.이름 = text
         }
         hideKeyboard()
         return true
