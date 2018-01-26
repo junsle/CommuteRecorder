@@ -7,7 +7,9 @@ target 'CommuteRecorder' do
   
   # Pods for CommuteRecorder
   pod 'CircularSlider'
-
+  pod 'Crashlytics', '~> 3.9'
+  pod 'Firebase/Core'
+  
   target 'CommuteRecorderTests' do
     inherit! :search_paths
     # Pods for testing

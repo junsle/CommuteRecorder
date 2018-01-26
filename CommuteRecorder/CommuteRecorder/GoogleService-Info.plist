@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>102829257727-5hob0dlpod67fiogisqag0ksh8v58e6e.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.102829257727-5hob0dlpod67fiogisqag0ksh8v58e6e</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBSeBCYgS6ixyLb0rnQnPzEJtiEl3w0doU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>102829257727</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.maro.CommuteRecorder</string>
+	<key>PROJECT_ID</key>
+	<string>maro-758d2</string>
+	<key>STORAGE_BUCKET</key>
+	<string>maro-758d2.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:102829257727:ios:3a1e6c1b2e746be2</string>
+	<key>DATABASE_URL</key>
+	<string>https://maro-758d2.firebaseio.com</string>
+</dict>
+</plist>

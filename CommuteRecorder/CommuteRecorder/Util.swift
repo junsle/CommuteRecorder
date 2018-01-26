@@ -87,6 +87,5 @@ public func resetWokringTime(){
     WorkingDataManage.sharedManager.금출근 = ""
     WorkingDataManage.sharedManager.금퇴근 = ""
     WorkingDataManage.sharedManager.휴가 = 0
-    WorkingDataManage.sharedManager.최근기록시간 = ""
     WorkingDataManage.sharedManager.출근중 = false
 }

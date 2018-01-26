@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class NCNavigationCtrl: UINavigationController {
     func commonSet()
@@ -95,41 +96,61 @@ class WorkingTimeCheckViewController: UIViewController {
         if let 월출근 = dateToOriginalHHmmString(date: stringToDate(date: WorkingDataManage.sharedManager.월출근)) {
             월출근입력.text = 월출근
         }
-        if let 화출근 = dateToOriginalHHmmString(date: stringToDate(date: WorkingDataManage.sharedManager.화출근)) {
-            화출근입력.text = 화출근
-        }
-        if let 수출근 = dateToOriginalHHmmString(date: stringToDate(date: WorkingDataManage.sharedManager.수출근)) {
-            수출근입력.text = 수출근
-        }
-        if let 목출근 = dateToOriginalHHmmString(date: stringToDate(date: WorkingDataManage.sharedManager.목출근)) {
-            목출근입력.text = 목출근
-        }
-        if let 금출근 = dateToOriginalHHmmString(date: stringToDate(date: WorkingDataManage.sharedManager.금출근)) {
-            금출근입력.text = 금출근
-        }
+        
         if let 월퇴근 = dateToOriginalHHmmString(date: stringToDate(date: WorkingDataManage.sharedManager.월퇴근)) {
             월퇴근입력.text = 월퇴근
         }
+        
+        if let 화출근 = dateToOriginalHHmmString(date: stringToDate(date: WorkingDataManage.sharedManager.화출근)) {
+            화출근입력.text = 화출근
+        }
+        
         if let 화퇴근 = dateToOriginalHHmmString(date: stringToDate(date: WorkingDataManage.sharedManager.화퇴근)) {
             화퇴근입력.text = 화퇴근
         }
+        
+        if let 수출근 = dateToOriginalHHmmString(date: stringToDate(date: WorkingDataManage.sharedManager.수출근)) {
+            수출근입력.text = 수출근
+        }
+        
         if let 수퇴근 = dateToOriginalHHmmString(date: stringToDate(date: WorkingDataManage.sharedManager.수퇴근)) {
             수퇴근입력.text = 수퇴근
         }
+        
+        if let 목출근 = dateToOriginalHHmmString(date: stringToDate(date: WorkingDataManage.sharedManager.목출근)) {
+            목출근입력.text = 목출근
+        }
+        
         if let 목퇴근 = dateToOriginalHHmmString(date: stringToDate(date: WorkingDataManage.sharedManager.목퇴근)) {
             목퇴근입력.text = 목퇴근
         }
+        
+        if let 금출근 = dateToOriginalHHmmString(date: stringToDate(date: WorkingDataManage.sharedManager.금출근)) {
+            금출근입력.text = 금출근
+        }
+        
         if let 금퇴근 = dateToOriginalHHmmString(date: stringToDate(date: WorkingDataManage.sharedManager.금퇴근)) {
             금퇴근입력.text = 금퇴근
         }
+        
         휴가입력.text = String(WorkingDataManage.sharedManager.휴가)
     }
     
     func dissmissView( _ sender:UIButton ){
+        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+            AnalyticsParameterItemID: "dissmissView" as NSObject,
+            AnalyticsParameterItemName: "workingTimeDissmissView" as NSObject,
+            AnalyticsParameterContentType: "cont" as NSObject
+            ])
         self.dismiss(animated: true, completion: nil)
     }
     
     func confirm( _ sender:UIButton){
+        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+            AnalyticsParameterItemID: "confirm" as NSObject,
+            AnalyticsParameterItemName: "workingTimeConfirm" as NSObject,
+            AnalyticsParameterContentType: "cont" as NSObject
+            ])
         if let text = 월출근입력.text {
             if text.count > 3 {
                 let nextIndex = text.index(after: text.startIndex)

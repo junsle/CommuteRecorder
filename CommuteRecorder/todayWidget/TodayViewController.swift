@@ -53,6 +53,13 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     @IBAction func clickCheckInBtn(_ sender: Any) {
+        
+        let thisWeek:String = "\(dateToMMddString(date: Date().startOfWeek) ?? "") ~ \(dateToMMddString(date: Date().endOfWeek) ?? "")"
+        
+        if 최근기록주 != thisWeek && 최근기록주 != "" { // 주 변경시 리셋 그러나 초기버전 리셋방지
+            resetWokringTime()
+        }
+        
         let checkInTime:String = dateToHHmmString(date: Date()) ?? ""
         setCheckIn(isCheckIn: true)
         출근중 = true
@@ -121,7 +128,6 @@ extension TodayViewController {
                     금퇴근 = val
                 }
             }
-            최근기록시간 = val
         }
         totalWorkingTime()
     }
@@ -215,13 +221,6 @@ extension TodayViewController {
     func totalWorkingTime(isMin:Bool = false) -> String?{
         var totalMin:Float = 40 * 60
         let cal = Calendar(identifier: .gregorian)
-        
-        if let last = stringToDate(date: 최근기록시간), let start =  Date().startOfWeek {
-            let comps = cal.dateComponents([.day], from: last  , to: start)
-            if comps.day ?? 0 >= 1 { // 한주가 바뀌면 데이터 리셋
-                resetWokringTime()
-            }
-        }
         
         if let enter = stringToDate(date: 월출근), let exit =  stringToDate(date: 월퇴근) {
             let comps = cal.dateComponents([.hour, .minute], from: enter, to: exit)
@@ -331,7 +330,6 @@ extension TodayViewController {
         금출근 = ""
         금퇴근 = ""
         휴가 = 0
-        최근기록시간 = ""
         출근중 = false
     }
     
@@ -394,6 +392,15 @@ extension TodayViewController {
         }
         
         return ""
+    }
+    
+    public func dateToMMddString(date:Date?) -> String?{
+        if let val = date {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MM-dd"
+            return formatter.string(from: val)
+        }
+        return nil
     }
     
     var 월출근:String {
@@ -540,15 +547,15 @@ extension TodayViewController {
         }
     }
     
-    var 최근기록시간:String {
+    var 최근기록주:String {
         get {
-            if let fri = defaults?.object(forKey: "KEY_USER_LATEST") as? String {
+            if let fri = defaults?.object(forKey: "KEY_USER_LATEST_WEEK") as? String {
                 return fri
             }
             return ""
         }
         set {
-            defaults?.set(newValue, forKey: "KEY_USER_LATEST")
+            defaults?.set(newValue, forKey: "KEY_USER_LATEST_WEEK")
         }
     }
     

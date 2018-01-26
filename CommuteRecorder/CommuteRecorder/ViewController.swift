@@ -9,6 +9,7 @@
 import UIKit
 import CircularSlider
 import UserNotifications
+import Firebase
 
 class ViewController: UIViewController {
     @IBOutlet weak var circularSlider: CircularSlider!
@@ -51,7 +52,14 @@ class ViewController: UIViewController {
             workingIcon.blink()
         }
         
-        startEndWeekLabel.text = "\(dateToMMddString(date: Date().startOfWeek) ?? "") ~ \(dateToMMddString(date: Date().endOfWeek) ?? "")"
+        let thisWeek:String = "\(dateToMMddString(date: Date().startOfWeek) ?? "") ~ \(dateToMMddString(date: Date().endOfWeek) ?? "")"
+        startEndWeekLabel.text = thisWeek
+        
+        if WorkingDataManage.sharedManager.최근기록주 != thisWeek && WorkingDataManage.sharedManager.최근기록주 != "" { // 주 변경시 리셋 그러나 초기버전 리셋방지
+            resetWokringTime()
+        }
+            
+        WorkingDataManage.sharedManager.최근기록주 = thisWeek
         
         totalWorkingTime()
         
@@ -75,7 +83,14 @@ class ViewController: UIViewController {
             workingIcon.blink()
         }
         
-        startEndWeekLabel.text = "\(dateToMMddString(date: Date().startOfWeek) ?? "") ~ \(dateToMMddString(date: Date().endOfWeek) ?? "")"
+        let thisWeek:String = "\(dateToMMddString(date: Date().startOfWeek) ?? "") ~ \(dateToMMddString(date: Date().endOfWeek) ?? "")"
+        startEndWeekLabel.text = thisWeek
+        
+        if WorkingDataManage.sharedManager.최근기록주 != thisWeek && WorkingDataManage.sharedManager.최근기록주 != "" { // 주 변경시 리셋 그러나 초기버전 리셋방지
+            resetWokringTime()
+        }
+        
+        WorkingDataManage.sharedManager.최근기록주 = thisWeek
         
         totalWorkingTime()
         
@@ -88,6 +103,11 @@ class ViewController: UIViewController {
     }
     
     @IBAction func clickConfirmWorkingTime(_ sender: Any) {
+        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+            AnalyticsParameterItemID: "clickConfirmWorkingTime" as NSObject,
+            AnalyticsParameterItemName: "clickConfirmWorkingTime" as NSObject,
+            AnalyticsParameterContentType: "cont" as NSObject
+            ])
         let infoCtrl = WorkingTimeCheckViewNavigationCtrl()
         infoCtrl.modalPresentationStyle = UIModalPresentationStyle.formSheet
         self.present(infoCtrl, animated: true) {}
@@ -109,6 +129,11 @@ class ViewController: UIViewController {
             setCheckIn(isCheckIn: false)
             WorkingDataManage.sharedManager.출근중 = false
             createMsg(msg: "\(WorkingDataManage.sharedManager.이름) \(checkInTime) 퇴근 \n 오늘일한시간 : \(todayWorkingTime() ?? "")\n 이번주잔여시간 : \(totalWorkingTime() ?? "")")
+            Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+                AnalyticsParameterItemID: "clickCommute" as NSObject,
+                AnalyticsParameterItemName: "checkOut" as NSObject,
+                AnalyticsParameterContentType: "cont" as NSObject
+                ])
         }else {
             checkInBtn.setTitle("퇴근", for: .normal)
             isCheckIn = true
@@ -118,6 +143,11 @@ class ViewController: UIViewController {
             setCheckIn(isCheckIn: true)
             WorkingDataManage.sharedManager.출근중 = true
             createMsg(msg: "\(WorkingDataManage.sharedManager.이름) \(checkInTime) 출근 \n이번주잔여시간 : \(totalWorkingTime() ?? "")\n")
+            Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+                AnalyticsParameterItemID: "clickCommute" as NSObject,
+                AnalyticsParameterItemName: "checkIn" as NSObject,
+                AnalyticsParameterContentType: "cont" as NSObject
+                ])
         }
     }
     
@@ -161,7 +191,6 @@ class ViewController: UIViewController {
                     WorkingDataManage.sharedManager.금퇴근 = val
                 }
             }
-            WorkingDataManage.sharedManager.최근기록시간 = val
         }
         totalWorkingTime()
     }
@@ -212,12 +241,28 @@ class ViewController: UIViewController {
     }
     
     @IBAction func clickVacation(_ sender: Any) {
+        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+            AnalyticsParameterItemID: "clickVacation" as NSObject,
+            AnalyticsParameterItemName: "click" as NSObject,
+            AnalyticsParameterContentType: "cont" as NSObject
+            ])
+
         let actionSheet = UIAlertController(title: "휴가선택", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
         actionSheet.addAction( UIAlertAction(title: "반차 (+4시간)", style: UIAlertActionStyle.default, handler: { (action) -> Void in
+            Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+                AnalyticsParameterItemID: "clickVacation" as NSObject,
+                AnalyticsParameterItemName: "click4" as NSObject,
+                AnalyticsParameterContentType: "cont" as NSObject
+                ])
             WorkingDataManage.sharedManager.휴가 = WorkingDataManage.sharedManager.휴가 + 4.0
             self.totalWorkingTime()
         }))
         actionSheet.addAction( UIAlertAction(title: "일차 (+8시간)", style: UIAlertActionStyle.default, handler: { (action) -> Void in
+            Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+                AnalyticsParameterItemID: "clickVacation" as NSObject,
+                AnalyticsParameterItemName: "click8" as NSObject,
+                AnalyticsParameterContentType: "cont" as NSObject
+                ])
             WorkingDataManage.sharedManager.휴가 = WorkingDataManage.sharedManager.휴가 + 8.0
             self.totalWorkingTime()
         }))
@@ -246,13 +291,6 @@ class ViewController: UIViewController {
     private func totalWorkingTime(isMin:Bool = false) -> String?{
         var totalMin:Float = 40 * 60
         let cal = Calendar(identifier: .gregorian)
-        
-        if let last = stringToDate(date: WorkingDataManage.sharedManager.최근기록시간), let start =  Date().startOfWeek {
-            let comps = cal.dateComponents([.day], from: last  , to: start)
-            if comps.day ?? 0 >= 1 { // 한주가 바뀌면 데이터 리셋
-                resetWokringTime()
-            }
-        }
         
         if let enter = stringToDate(date: WorkingDataManage.sharedManager.월출근), let exit =  stringToDate(date: WorkingDataManage.sharedManager.월퇴근) {
             let comps = cal.dateComponents([.hour, .minute], from: enter, to: exit)
@@ -542,6 +580,11 @@ extension String {
 extension ViewController : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let text = textField.text {
+            Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+                AnalyticsParameterItemID: "clickName" as NSObject,
+                AnalyticsParameterItemName: "enterName" as NSObject,
+                AnalyticsParameterContentType: "cont" as NSObject
+                ])
             WorkingDataManage.sharedManager.이름 = text
         }
         hideKeyboard()

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		263EA2362D036C1984126464 /* Pods_CommuteRecorderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FBD14784E041FABBBE0D22F /* Pods_CommuteRecorderUITests.framework */; };
+		4F198C662019DA230092234C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F198C652019DA230092234C /* GoogleService-Info.plist */; };
 		4F490ED2200DECDB0035C86E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F490ED1200DECDB0035C86E /* AppDelegate.swift */; };
 		4F490ED4200DECDB0035C86E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F490ED3200DECDB0035C86E /* ViewController.swift */; };
 		4F490ED7200DECDB0035C86E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F490ED5200DECDB0035C86E /* Main.storyboard */; };
@@ -22,6 +23,8 @@
 		4FC92C9220118E070099B786 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC92C9120118E070099B786 /* TodayViewController.swift */; };
 		4FC92C9520118E070099B786 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FC92C9320118E070099B786 /* MainInterface.storyboard */; };
 		4FC92C9920118E070099B786 /* todayWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4FC92C8D20118E070099B786 /* todayWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4FD9D1E62019D1E2002B2282 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FD9D1E42019D1E1002B2282 /* Fabric.framework */; };
+		4FD9D1E72019D1E2002B2282 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FD9D1E52019D1E2002B2282 /* Crashlytics.framework */; };
 		5FB2102501CE7AD4B2F0F2E2 /* Pods_CommuteRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8245B2770023151B142B15DF /* Pods_CommuteRecorder.framework */; };
 		9F7A23980DF2227446780416 /* Pods_CommuteRecorderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14AF65B246FD2EA4CE736EE /* Pods_CommuteRecorderTests.framework */; };
 		B426B4952016384E004DA277 /* WorkingTimeCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B426B4932016384E004DA277 /* WorkingTimeCheckViewController.swift */; };
@@ -68,6 +71,7 @@
 
 /* Begin PBXFileReference section */
 		3243FE2E269F859812CE440C /* Pods-CommuteRecorderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommuteRecorderTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CommuteRecorderTests/Pods-CommuteRecorderTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4F198C652019DA230092234C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4F490ECE200DECDB0035C86E /* CommuteRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommuteRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F490ED1200DECDB0035C86E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F490ED3200DECDB0035C86E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +96,8 @@
 		4FC92C9120118E070099B786 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		4FC92C9420118E070099B786 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		4FC92C9620118E070099B786 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4FD9D1E42019D1E1002B2282 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		4FD9D1E52019D1E2002B2282 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		4FF114CE2011B26F006AEF0F /* CommuteRecorder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CommuteRecorder.entitlements; sourceTree = "<group>"; };
 		4FF114CF2011B2AD006AEF0F /* todayWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = todayWidget.entitlements; sourceTree = "<group>"; };
 		57B13017978B7199AAFD27AE /* Pods-CommuteRecorderUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommuteRecorderUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CommuteRecorderUITests/Pods-CommuteRecorderUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -112,6 +118,8 @@
 			files = (
 				4FC47F19200F37E300522036 /* CircularSlider.framework in Frameworks */,
 				5FB2102501CE7AD4B2F0F2E2 /* Pods_CommuteRecorder.framework in Frameworks */,
+				4FD9D1E72019D1E2002B2282 /* Crashlytics.framework in Frameworks */,
+				4FD9D1E62019D1E2002B2282 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +180,8 @@
 		4F490EC5200DECDB0035C86E = {
 			isa = PBXGroup;
 			children = (
+				4FD9D1E52019D1E2002B2282 /* Crashlytics.framework */,
+				4FD9D1E42019D1E1002B2282 /* Fabric.framework */,
 				4F490ED0200DECDB0035C86E /* CommuteRecorder */,
 				4F490EE5200DECDB0035C86E /* CommuteRecorderTests */,
 				4F490EF0200DECDB0035C86E /* CommuteRecorderUITests */,
@@ -207,6 +217,7 @@
 				B426B4942016384E004DA277 /* WorkingTimeCheckViewController.xib */,
 				4FA5404F2016E3CB00B5A289 /* WorkingDataManage.swift */,
 				4FA540512016E65000B5A289 /* Util.swift */,
+				4F198C652019DA230092234C /* GoogleService-Info.plist */,
 			);
 			path = CommuteRecorder;
 			sourceTree = "<group>";
@@ -396,6 +407,7 @@
 				4F490EDC200DECDB0035C86E /* LaunchScreen.storyboard in Resources */,
 				4F490ED9200DECDB0035C86E /* Assets.xcassets in Resources */,
 				4F490ED7200DECDB0035C86E /* Main.storyboard in Resources */,
+				4F198C662019DA230092234C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,10 +444,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CommuteRecorder/Pods-CommuteRecorder-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/CircularSlider/CircularSlider.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CircularSlider.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -803,6 +819,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4282VJNTJ4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = CommuteRecorder/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -825,6 +845,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4282VJNTJ4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = CommuteRecorder/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
