@@ -53,13 +53,6 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     @IBAction func clickCheckInBtn(_ sender: Any) {
-        
-        let thisWeek:String = "\(dateToMMddString(date: Date().startOfWeek) ?? "") ~ \(dateToMMddString(date: Date().endOfWeek) ?? "")"
-        
-        if 최근기록주 != thisWeek && 최근기록주 != "" { // 주 변경시 리셋 그러나 초기버전 리셋방지
-            resetWokringTime()
-        }
-        
         let checkInTime:String = dateToHHmmString(date: Date()) ?? ""
         setCheckIn(isCheckIn: true)
         출근중 = true
@@ -90,6 +83,15 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 // MARK: - 네트워크
 extension TodayViewController {
     func setCheckIn(isCheckIn:Bool){
+        let cal = Calendar(identifier: .gregorian)
+        let startOfDay:Date = cal.startOfDay(for: Date())
+        if let last = stringToDate(date: 최근기록시간) {
+            let comps = cal.dateComponents([.day], from: last  , to: startOfDay)
+            if comps.day ?? 0 >= 1 { // 한주가 바뀌면 데이터 리셋
+                resetWokringTime()
+            }
+        }
+        
         if let val = dateToString(date: Date()) {
             if 2 == checkDayOfTheWeek(){  // 월
                 if isCheckIn {
@@ -128,6 +130,7 @@ extension TodayViewController {
                     금퇴근 = val
                 }
             }
+            최근기록시간 = val
         }
         totalWorkingTime()
     }
@@ -544,6 +547,18 @@ extension TodayViewController {
         }
         set {
             defaults?.set(newValue, forKey: "KEY_USER_NAME")
+        }
+    }
+    
+    var 최근기록시간:String {
+        get {
+            if let fri = defaults?.object(forKey: "KEY_USER_LATEST") as? String {
+                return fri
+            }
+            return ""
+        }
+        set {
+            defaults?.set(newValue, forKey: "KEY_USER_LATEST")
         }
     }
     

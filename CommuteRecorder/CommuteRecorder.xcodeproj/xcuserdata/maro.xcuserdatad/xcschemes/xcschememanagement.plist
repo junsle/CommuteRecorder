@@ -7,12 +7,35 @@
 		<key>CommuteRecorder.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>6</integer>
 		</dict>
 		<key>todayWidget.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>7</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>4F490ECD200DECDB0035C86E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4F490EE1200DECDB0035C86E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4F490EEC200DECDB0035C86E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4FC92C8C20118E070099B786</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

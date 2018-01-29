@@ -170,6 +170,30 @@ class WorkingTimeCheckViewController: UIViewController {
             }else if text.count == 0 {
                 WorkingDataManage.sharedManager.월출근 = ""
             }
+            WorkingDataManage.sharedManager.최근기록시간 = WorkingDataManage.sharedManager.월출근
+        }
+        
+        if let text = 월퇴근입력.text {
+            if text.count > 3 {
+                
+                let nextIndex = text.index(after: text.startIndex)
+                let hour = text[text.startIndex...nextIndex]
+                
+                let index = text.index(text.startIndex, offsetBy: 2)
+                let min = text.substring(from: index)  // Swift
+                
+                if let hourInt = Int(hour), let minInt = Int(min) {
+                    print("월퇴근 : \(hourInt) \(minInt)")
+                    if let 요일 = Date().월요일 {
+                        if let 퇴근 = dateToString(date: dateChange(date: 요일 , hour: hourInt , min: minInt )) {
+                            WorkingDataManage.sharedManager.월퇴근 = 퇴근
+                        }
+                    }
+                }
+            }else if text.count == 0 {
+                WorkingDataManage.sharedManager.월퇴근 = ""
+            }
+            WorkingDataManage.sharedManager.최근기록시간 = WorkingDataManage.sharedManager.월퇴근
         }
         
         if let text = 화출근입력.text {
@@ -191,6 +215,29 @@ class WorkingTimeCheckViewController: UIViewController {
             }else if text.count == 0 {
                 WorkingDataManage.sharedManager.화출근 = ""
             }
+            WorkingDataManage.sharedManager.최근기록시간 = WorkingDataManage.sharedManager.화출근
+        }
+        
+        if let text = 화퇴근입력.text {
+            if text.count > 3 {
+                let nextIndex = text.index(after: text.startIndex)
+                let hour = text[text.startIndex...nextIndex]
+                
+                let index = text.index(text.startIndex, offsetBy: 2)
+                let min = text.substring(from: index)  // Swift
+                
+                if let hourInt = Int(hour), let minInt = Int(min) {
+                    print("화퇴근 : \(hourInt) \(minInt)")
+                    if let 요일 = Date().화요일 {
+                        if let 퇴근 = dateToString(date: dateChange(date: 요일 , hour: hourInt , min: minInt )) {
+                            WorkingDataManage.sharedManager.화퇴근 = 퇴근
+                        }
+                    }
+                }
+            }else if text.count == 0 {
+                WorkingDataManage.sharedManager.화퇴근 = ""
+            }
+            WorkingDataManage.sharedManager.최근기록시간 = WorkingDataManage.sharedManager.화퇴근
         }
         
         if let text = 수출근입력.text {
@@ -212,6 +259,30 @@ class WorkingTimeCheckViewController: UIViewController {
             }else if text.count == 0 {
                 WorkingDataManage.sharedManager.수출근 = ""
             }
+            WorkingDataManage.sharedManager.최근기록시간 = WorkingDataManage.sharedManager.수출근
+        }
+        
+        if let text = 수퇴근입력.text {
+            if text.count > 3 {
+                
+                let nextIndex = text.index(after: text.startIndex)
+                let hour = text[text.startIndex...nextIndex]
+                
+                let index = text.index(text.startIndex, offsetBy: 2)
+                let min = text.substring(from: index)  // Swift
+                
+                if let hourInt = Int(hour), let minInt = Int(min) {
+                    print("수퇴근 : \(hourInt) \(minInt)")
+                    if let 요일 = Date().수요일 {
+                        if let 퇴근 = dateToString(date: dateChange(date: 요일 , hour: hourInt , min: minInt )) {
+                            WorkingDataManage.sharedManager.수퇴근 = 퇴근
+                        }
+                    }
+                }
+            }else if text.count == 0 {
+                WorkingDataManage.sharedManager.수퇴근 = ""
+            }
+            WorkingDataManage.sharedManager.최근기록시간 = WorkingDataManage.sharedManager.수퇴근
         }
         
         if let text = 목출근입력.text {
@@ -233,6 +304,30 @@ class WorkingTimeCheckViewController: UIViewController {
             }else if text.count == 0 {
                 WorkingDataManage.sharedManager.목출근 = ""
             }
+            WorkingDataManage.sharedManager.최근기록시간 = WorkingDataManage.sharedManager.목출근
+        }
+        
+        if let text = 목퇴근입력.text {
+            if text.count > 3 {
+                
+                let nextIndex = text.index(after: text.startIndex)
+                let hour = text[text.startIndex...nextIndex]
+                
+                let index = text.index(text.startIndex, offsetBy: 2)
+                let min = text.substring(from: index)  // Swift
+                
+                if let hourInt = Int(hour), let minInt = Int(min) {
+                    print("목퇴근 : \(hourInt) \(minInt)")
+                    if let 요일 = Date().목요일 {
+                        if let 퇴근 = dateToString(date: dateChange(date: 요일 , hour: hourInt , min: minInt )) {
+                            WorkingDataManage.sharedManager.목퇴근 = 퇴근
+                        }
+                    }
+                }
+            }else if text.count == 0 {
+                WorkingDataManage.sharedManager.목퇴근 = ""
+            }
+            WorkingDataManage.sharedManager.최근기록시간 = WorkingDataManage.sharedManager.목퇴근
         }
         
         if let text = 금출근입력.text {
@@ -255,93 +350,7 @@ class WorkingTimeCheckViewController: UIViewController {
             }else if text.count == 0 {
                 WorkingDataManage.sharedManager.금출근 = ""
             }
-        }
-        
-        if let text = 월퇴근입력.text {
-            if text.count > 3 {
-
-            let nextIndex = text.index(after: text.startIndex)
-            let hour = text[text.startIndex...nextIndex]
-            
-            let index = text.index(text.startIndex, offsetBy: 2)
-            let min = text.substring(from: index)  // Swift
-            
-            if let hourInt = Int(hour), let minInt = Int(min) {
-                print("월퇴근 : \(hourInt) \(minInt)")
-                if let 요일 = Date().월요일 {
-                    if let 퇴근 = dateToString(date: dateChange(date: 요일 , hour: hourInt , min: minInt )) {
-                        WorkingDataManage.sharedManager.월퇴근 = 퇴근
-                    }
-                }
-            }
-            }else if text.count == 0 {
-                WorkingDataManage.sharedManager.월퇴근 = ""
-            }
-        }
-        
-        if let text = 화퇴근입력.text {
-            if text.count > 3 {
-            let nextIndex = text.index(after: text.startIndex)
-            let hour = text[text.startIndex...nextIndex]
-            
-            let index = text.index(text.startIndex, offsetBy: 2)
-            let min = text.substring(from: index)  // Swift
-            
-            if let hourInt = Int(hour), let minInt = Int(min) {
-                print("화퇴근 : \(hourInt) \(minInt)")
-                if let 요일 = Date().화요일 {
-                    if let 퇴근 = dateToString(date: dateChange(date: 요일 , hour: hourInt , min: minInt )) {
-                        WorkingDataManage.sharedManager.화퇴근 = 퇴근
-                    }
-                }
-            }
-            }else if text.count == 0 {
-                WorkingDataManage.sharedManager.화퇴근 = ""
-            }
-        }
-        
-        if let text = 수퇴근입력.text {
-            if text.count > 3 {
-
-            let nextIndex = text.index(after: text.startIndex)
-            let hour = text[text.startIndex...nextIndex]
-            
-            let index = text.index(text.startIndex, offsetBy: 2)
-            let min = text.substring(from: index)  // Swift
-            
-            if let hourInt = Int(hour), let minInt = Int(min) {
-                print("수퇴근 : \(hourInt) \(minInt)")
-                if let 요일 = Date().수요일 {
-                    if let 퇴근 = dateToString(date: dateChange(date: 요일 , hour: hourInt , min: minInt )) {
-                        WorkingDataManage.sharedManager.수퇴근 = 퇴근
-                    }
-                }
-            }
-            }else if text.count == 0 {
-                WorkingDataManage.sharedManager.수퇴근 = ""
-            }
-        }
-        
-        if let text = 목퇴근입력.text {
-            if text.count > 3 {
-
-            let nextIndex = text.index(after: text.startIndex)
-            let hour = text[text.startIndex...nextIndex]
-            
-            let index = text.index(text.startIndex, offsetBy: 2)
-            let min = text.substring(from: index)  // Swift
-            
-            if let hourInt = Int(hour), let minInt = Int(min) {
-                print("목퇴근 : \(hourInt) \(minInt)")
-                if let 요일 = Date().목요일 {
-                    if let 퇴근 = dateToString(date: dateChange(date: 요일 , hour: hourInt , min: minInt )) {
-                        WorkingDataManage.sharedManager.목퇴근 = 퇴근
-                    }
-                }
-            }
-            }else if text.count == 0 {
-                WorkingDataManage.sharedManager.목퇴근 = ""
-            }
+            WorkingDataManage.sharedManager.최근기록시간 = WorkingDataManage.sharedManager.금출근
         }
         
         if let text = 금퇴근입력.text {
@@ -364,6 +373,7 @@ class WorkingTimeCheckViewController: UIViewController {
             }else if text.count == 0 {
                 WorkingDataManage.sharedManager.금퇴근 = ""
             }
+            WorkingDataManage.sharedManager.최근기록시간 = WorkingDataManage.sharedManager.금퇴근
         }
         
         if let text = 휴가입력.text {
@@ -459,5 +469,35 @@ extension Date {
         components.minute = min
         
         return cal.date(from: components)
+    }
+    
+    var 월요일: Date? {
+        let gregorian = Calendar(identifier: .gregorian)
+        guard let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else { return nil }
+        return gregorian.date(byAdding: .day, value: 1, to: sunday)
+    }
+    
+    var 화요일: Date? {
+        let gregorian = Calendar(identifier: .gregorian)
+        guard let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else { return nil }
+        return gregorian.date(byAdding: .day, value: 2, to: sunday)
+    }
+    
+    var 수요일: Date? {
+        let gregorian = Calendar(identifier: .gregorian)
+        guard let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else { return nil }
+        return gregorian.date(byAdding: .day, value: 3, to: sunday)
+    }
+    
+    var 목요일: Date? {
+        let gregorian = Calendar(identifier: .gregorian)
+        guard let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else { return nil }
+        return gregorian.date(byAdding: .day, value: 4, to: sunday)
+    }
+    
+    var 금요일: Date? {
+        let gregorian = Calendar(identifier: .gregorian)
+        guard let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else { return nil }
+        return gregorian.date(byAdding: .day, value: 5, to: sunday)
     }
 }

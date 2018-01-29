@@ -52,14 +52,7 @@ class ViewController: UIViewController {
             workingIcon.blink()
         }
         
-        let thisWeek:String = "\(dateToMMddString(date: Date().startOfWeek) ?? "") ~ \(dateToMMddString(date: Date().endOfWeek) ?? "")"
-        startEndWeekLabel.text = thisWeek
-        
-        if WorkingDataManage.sharedManager.최근기록주 != thisWeek && WorkingDataManage.sharedManager.최근기록주 != "" { // 주 변경시 리셋 그러나 초기버전 리셋방지
-            resetWokringTime()
-        }
-            
-        WorkingDataManage.sharedManager.최근기록주 = thisWeek
+        startEndWeekLabel.text = "\(dateToMMddString(date: Date().startOfWeek) ?? "") ~ \(dateToMMddString(date: Date().endOfWeek) ?? "")"
         
         totalWorkingTime()
         
@@ -83,14 +76,7 @@ class ViewController: UIViewController {
             workingIcon.blink()
         }
         
-        let thisWeek:String = "\(dateToMMddString(date: Date().startOfWeek) ?? "") ~ \(dateToMMddString(date: Date().endOfWeek) ?? "")"
-        startEndWeekLabel.text = thisWeek
-        
-        if WorkingDataManage.sharedManager.최근기록주 != thisWeek && WorkingDataManage.sharedManager.최근기록주 != "" { // 주 변경시 리셋 그러나 초기버전 리셋방지
-            resetWokringTime()
-        }
-        
-        WorkingDataManage.sharedManager.최근기록주 = thisWeek
+        startEndWeekLabel.text = "\(dateToMMddString(date: Date().startOfWeek) ?? "") ~ \(dateToMMddString(date: Date().endOfWeek) ?? "")"
         
         totalWorkingTime()
         
@@ -191,6 +177,7 @@ class ViewController: UIViewController {
                     WorkingDataManage.sharedManager.금퇴근 = val
                 }
             }
+            WorkingDataManage.sharedManager.최근기록시간 = val
         }
         totalWorkingTime()
     }
@@ -291,6 +278,14 @@ class ViewController: UIViewController {
     private func totalWorkingTime(isMin:Bool = false) -> String?{
         var totalMin:Float = 40 * 60
         let cal = Calendar(identifier: .gregorian)
+        let startOfDay:Date = cal.startOfDay(for: Date())
+
+        if let last = stringToDate(date: WorkingDataManage.sharedManager.최근기록시간) {
+            let comps = cal.dateComponents([.day], from: last  , to: startOfDay)
+            if comps.day ?? 0 >= 1 { // 한주가 바뀌면 데이터 리셋
+                resetWokringTime()
+            }
+        }
         
         if let enter = stringToDate(date: WorkingDataManage.sharedManager.월출근), let exit =  stringToDate(date: WorkingDataManage.sharedManager.월퇴근) {
             let comps = cal.dateComponents([.hour, .minute], from: enter, to: exit)
@@ -526,35 +521,6 @@ extension Date {
         return gregorian.date(byAdding: .day, value: 5, to: sunday)
     }
     
-    var 월요일: Date? {
-        let gregorian = Calendar(identifier: .gregorian)
-        guard let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else { return nil }
-        return gregorian.date(byAdding: .day, value: 1, to: sunday)
-    }
-    
-    var 화요일: Date? {
-        let gregorian = Calendar(identifier: .gregorian)
-        guard let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else { return nil }
-        return gregorian.date(byAdding: .day, value: 2, to: sunday)
-    }
-    
-    var 수요일: Date? {
-        let gregorian = Calendar(identifier: .gregorian)
-        guard let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else { return nil }
-        return gregorian.date(byAdding: .day, value: 3, to: sunday)
-    }
-    
-    var 목요일: Date? {
-        let gregorian = Calendar(identifier: .gregorian)
-        guard let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else { return nil }
-        return gregorian.date(byAdding: .day, value: 4, to: sunday)
-    }
-    
-    var 금요일: Date? {
-        let gregorian = Calendar(identifier: .gregorian)
-        guard let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else { return nil }
-        return gregorian.date(byAdding: .day, value: 5, to: sunday)
-    }
 }
 
 extension String {
