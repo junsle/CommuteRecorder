@@ -135,6 +135,18 @@ class WorkingDataManage {
         }
     }
     
+    var 최근기록시간:String {
+        get {
+            if let fri = defaults?.object(forKey: "KEY_USER_LATEST") as? String {
+                return fri
+            }
+            return ""
+        }
+        set {
+            defaults?.set(newValue, forKey: "KEY_USER_LATEST")
+        }
+    }
+    
     var 최근기록주:String {
         get {
             if let fri = defaults?.object(forKey: "KEY_USER_LATEST_WEEK") as? String {
