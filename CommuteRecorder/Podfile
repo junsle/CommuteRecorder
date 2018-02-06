@@ -9,6 +9,7 @@ target 'CommuteRecorder' do
   pod 'CircularSlider'
   pod 'Crashlytics', '~> 3.9'
   pod 'Firebase/Core'
+  pod 'ActionSheetPicker-3.0', '~> 2.3.0'
   
   target 'CommuteRecorderTests' do
     inherit! :search_paths

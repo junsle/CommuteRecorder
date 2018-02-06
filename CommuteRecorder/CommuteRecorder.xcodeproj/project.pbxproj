@@ -29,6 +29,7 @@
 		9F7A23980DF2227446780416 /* Pods_CommuteRecorderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14AF65B246FD2EA4CE736EE /* Pods_CommuteRecorderTests.framework */; };
 		B426B4952016384E004DA277 /* WorkingTimeCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B426B4932016384E004DA277 /* WorkingTimeCheckViewController.swift */; };
 		B426B4962016384E004DA277 /* WorkingTimeCheckViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B426B4942016384E004DA277 /* WorkingTimeCheckViewController.xib */; };
+		B46F92BA20271F6100659CBF /* ActionSheetPicker_3_0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B46F92BB20271F6100659CBF /* ActionSheetPicker_3_0.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,7 @@
 		ADD94856099D33FC1A4A216E /* Pods-CommuteRecorder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommuteRecorder.release.xcconfig"; path = "Pods/Target Support Files/Pods-CommuteRecorder/Pods-CommuteRecorder.release.xcconfig"; sourceTree = "<group>"; };
 		B426B4932016384E004DA277 /* WorkingTimeCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingTimeCheckViewController.swift; sourceTree = "<group>"; };
 		B426B4942016384E004DA277 /* WorkingTimeCheckViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkingTimeCheckViewController.xib; sourceTree = "<group>"; };
+		B46F92BB20271F6100659CBF /* ActionSheetPicker_3_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ActionSheetPicker_3_0.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8AF6436780AB77E756B03BF /* Pods-CommuteRecorder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommuteRecorder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CommuteRecorder/Pods-CommuteRecorder.debug.xcconfig"; sourceTree = "<group>"; };
 		E14AF65B246FD2EA4CE736EE /* Pods_CommuteRecorderTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommuteRecorderTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -116,6 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B46F92BA20271F6100659CBF /* ActionSheetPicker_3_0.framework in Frameworks */,
 				4FC47F19200F37E300522036 /* CircularSlider.framework in Frameworks */,
 				5FB2102501CE7AD4B2F0F2E2 /* Pods_CommuteRecorder.framework in Frameworks */,
 				4FD9D1E72019D1E2002B2282 /* Crashlytics.framework in Frameworks */,
@@ -166,6 +169,7 @@
 		3E23D87C5456F6648ABA1EBE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B46F92BB20271F6100659CBF /* ActionSheetPicker_3_0.framework */,
 				4FC47F1D200F39E800522036 /* Realm.framework */,
 				4FC47F1E200F39E800522036 /* RealmSwift.framework */,
 				4FC47F1A200F37E300522036 /* CircularSlider.framework */,
@@ -443,12 +447,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CommuteRecorder/Pods-CommuteRecorder-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ActionSheetPicker-3.0/ActionSheetPicker_3_0.framework",
 				"${BUILT_PRODUCTS_DIR}/CircularSlider/CircularSlider.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ActionSheetPicker_3_0.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CircularSlider.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",

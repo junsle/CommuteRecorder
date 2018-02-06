@@ -194,4 +194,16 @@ class WorkingDataManage {
             defaults?.set(newValue, forKey: "KEY_USER_VACATION")
         }
     }
+    
+    var 제외:Float {
+        get {
+            if let vacation = defaults?.object(forKey: "KEY_USER_EX") as? Float {
+                return vacation
+            }
+            return 0
+        }
+        set {
+            defaults?.set(newValue, forKey: "KEY_USER_EX")
+        }
+    }
 }

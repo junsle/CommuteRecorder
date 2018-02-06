@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import ActionSheetPicker_3_0
 
 class NCNavigationCtrl: UINavigationController {
     func commonSet()
@@ -59,12 +60,33 @@ class WorkingTimeCheckViewController: UIViewController {
     @IBOutlet weak var 수퇴근입력: UITextField!
     @IBOutlet weak var 목퇴근입력: UITextField!
     @IBOutlet weak var 금퇴근입력: UITextField!
+    @IBOutlet weak var 월출근버튼: UIButton!
+    @IBOutlet weak var 화출근버튼: UIButton!
+    @IBOutlet weak var 수출근버튼: UIButton!
+    @IBOutlet weak var 목출근버튼: UIButton!
+    @IBOutlet weak var 금출근버튼: UIButton!
+    @IBOutlet weak var 월퇴근버튼: UIButton!
+    @IBOutlet weak var 화퇴근버튼: UIButton!
+    @IBOutlet weak var 수퇴근버튼: UIButton!
+    @IBOutlet weak var 목퇴근버튼: UIButton!
+    @IBOutlet weak var 금퇴근버튼: UIButton!
     
+    @IBOutlet weak var 제외입력: UITextField!
     @IBOutlet weak var 휴가입력: UITextField!
-    
+    var selectButton:UIButton?
     override func viewDidLoad() {
         super.viewDidLoad()
         setCustomNavigationInit()
+        월출근버튼.tag = 1
+        화출근버튼.tag = 2
+        수출근버튼.tag = 3
+        목출근버튼.tag = 4
+        금출근버튼.tag = 5
+        월퇴근버튼.tag = 6
+        화퇴근버튼.tag = 7
+        수퇴근버튼.tag = 8
+        목퇴근버튼.tag = 9
+        금퇴근버튼.tag = 10
         setData()
     }
 
@@ -134,6 +156,7 @@ class WorkingTimeCheckViewController: UIViewController {
         }
         
         휴가입력.text = String(WorkingDataManage.sharedManager.휴가)
+        제외입력.text = String(WorkingDataManage.sharedManager.제외)
     }
     
     func dissmissView( _ sender:UIButton ){
@@ -387,6 +410,17 @@ class WorkingTimeCheckViewController: UIViewController {
             }
         }
         
+        if let text = 제외입력.text {
+            if text.count > 0 {
+                if let hourInt = Float(text){
+                    print("제외 : \(hourInt)")
+                    WorkingDataManage.sharedManager.제외 = hourInt
+                }
+            }else {
+                WorkingDataManage.sharedManager.제외 = 0
+            }
+        }
+        
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -400,6 +434,217 @@ class WorkingTimeCheckViewController: UIViewController {
         components.minute = min
         
         return gregorian.date(from: components)!
+    }
+    
+    @IBAction func clickMonIn(_ sender: Any) {
+        selectButton = 월출근버튼
+        if 월출근입력.text != "" {
+            showDeleteAndTime()
+        }else {
+            showTimePicker(sender as! UIButton)
+        }
+    }
+    @IBAction func clickMonOut(_ sender: Any) {
+        selectButton = 월퇴근버튼
+        if 월퇴근입력.text != "" {
+            showDeleteAndTime()
+        }else {
+            showTimePicker(sender as! UIButton)
+        }
+    }
+    
+    @IBAction func clickTueIn(_ sender: Any) {
+        selectButton = 화출근버튼
+        if 화출근입력.text != "" {
+            showDeleteAndTime()
+        }else {
+            showTimePicker(sender as! UIButton)
+        }
+    }
+    @IBAction func clickTheOut(_ sender: Any) {
+        selectButton = 화퇴근버튼
+        if 화퇴근입력.text != "" {
+            showDeleteAndTime()
+        }else {
+            showTimePicker(sender as! UIButton)
+        }
+    }
+    
+    @IBAction func clickWedIn(_ sender: Any) {
+        selectButton = 수출근버튼
+        if 수출근입력.text != "" {
+            showDeleteAndTime()
+        }else {
+            showTimePicker(sender as! UIButton)
+        }
+    }
+    @IBAction func clickWedOut(_ sender: Any) {
+        selectButton = 수퇴근버튼
+        if 수퇴근입력.text != "" {
+            showDeleteAndTime()
+        }else {
+            showTimePicker(sender as! UIButton)
+        }
+    }
+    
+    @IBAction func clickThuIn(_ sender: Any) {
+        selectButton = 목출근버튼
+        if 목출근입력.text != "" {
+            showDeleteAndTime()
+        }else {
+            showTimePicker(sender as! UIButton)
+        }
+    }
+    @IBAction func clickThuOut(_ sender: Any) {
+        selectButton = 목퇴근버튼
+        if 목퇴근입력.text != "" {
+            showDeleteAndTime()
+        }else {
+            showTimePicker(sender as! UIButton)
+        }
+    }
+    
+    @IBAction func clickFriIn(_ sender: Any) {
+        selectButton = 금출근버튼
+        if 금출근입력.text != "" {
+            showDeleteAndTime()
+        }else {
+            showTimePicker(sender as! UIButton)
+        }
+    }
+    @IBAction func clickFriOut(_ sender: Any) {
+        selectButton = 금퇴근버튼
+        if 금퇴근입력.text != "" {
+            showDeleteAndTime()
+        }else {
+            showTimePicker(sender as! UIButton)
+        }
+    }
+    
+    func showTimePicker(_ sender: UIButton){
+        var selectedDate:Date?
+        selectedDate = Date()
+        if selectButton?.tag == 1 {
+            if WorkingDataManage.sharedManager.월출근 != "" {
+                selectedDate = stringToDate(date: WorkingDataManage.sharedManager.월출근)
+            }else {
+                
+            }
+        }else if selectButton?.tag == 2 {
+            if WorkingDataManage.sharedManager.화출근 != "" {
+                selectedDate = stringToDate(date: WorkingDataManage.sharedManager.화출근)
+            }
+        }else if selectButton?.tag == 3 {
+            if WorkingDataManage.sharedManager.수출근 != "" {
+                selectedDate = stringToDate(date: WorkingDataManage.sharedManager.수출근)
+            }
+        }else if selectButton?.tag == 4 {
+            if WorkingDataManage.sharedManager.목출근 != "" {
+                selectedDate = stringToDate(date: WorkingDataManage.sharedManager.목출근)
+            }
+        }else if selectButton?.tag == 5 {
+            if WorkingDataManage.sharedManager.금출근 != "" {
+                selectedDate = stringToDate(date: WorkingDataManage.sharedManager.금출근)
+            }
+        }else if selectButton?.tag == 6 {
+            if WorkingDataManage.sharedManager.월퇴근 != "" {
+                selectedDate = stringToDate(date: WorkingDataManage.sharedManager.월퇴근)
+            }
+        }else if selectButton?.tag == 7 {
+            if WorkingDataManage.sharedManager.화퇴근 != "" {
+                selectedDate = stringToDate(date: WorkingDataManage.sharedManager.화퇴근)
+            }
+        }else if selectButton?.tag == 8 {
+            if WorkingDataManage.sharedManager.수퇴근 != "" {
+                selectedDate = stringToDate(date: WorkingDataManage.sharedManager.수퇴근)
+            }
+        }else if selectButton?.tag == 9 {
+            if WorkingDataManage.sharedManager.목퇴근 != "" {
+                selectedDate = stringToDate(date: WorkingDataManage.sharedManager.목퇴근)
+            }
+        }else if selectButton?.tag == 10 {
+            if WorkingDataManage.sharedManager.금퇴근 != "" {
+                selectedDate = stringToDate(date: WorkingDataManage.sharedManager.금퇴근)
+            }
+        }
+        
+        let datePicker = ActionSheetDatePicker(title: "Time:", datePickerMode: UIDatePickerMode.time, selectedDate: selectedDate, target: self, action: #selector(self.datePicked(_:)), origin: sender.superview!.superview)
+        
+        datePicker?.addCustomButton(withTitle: "Now", value: Date())
+        datePicker?.minuteInterval = 1
+        datePicker?.show()
+    }
+    
+    func showDeleteAndTime(){
+        let actionSheet = UIAlertController(title: "시간설정", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        actionSheet.addAction( UIAlertAction(title: "시간입력", style: UIAlertActionStyle.default, handler: { (action) -> Void in
+            Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+                AnalyticsParameterItemID: "clickInputTime" as NSObject,
+                AnalyticsParameterItemName: "time" as NSObject,
+                AnalyticsParameterContentType: "cont" as NSObject
+                ])
+            if let button = self.selectButton {
+                self.showTimePicker(button)
+            }
+        }))
+        actionSheet.addAction( UIAlertAction(title: "시간삭제", style: UIAlertActionStyle.default, handler: { (action) -> Void in
+            Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+                AnalyticsParameterItemID: "clickDeleteTime" as NSObject,
+                AnalyticsParameterItemName: "time" as NSObject,
+                AnalyticsParameterContentType: "cont" as NSObject
+                ])
+            
+            if self.selectButton?.tag == 1 {
+                self.월출근입력.text = ""
+            }else if self.selectButton?.tag == 2 {
+                self.화출근입력.text = ""
+            }else if self.selectButton?.tag == 3 {
+                self.수출근입력.text = ""
+            }else if self.selectButton?.tag == 4 {
+                self.목출근입력.text = ""
+            }else if self.selectButton?.tag == 5 {
+                self.금출근입력.text = ""
+            }else if self.selectButton?.tag == 6 {
+                self.월퇴근입력.text = ""
+            }else if self.selectButton?.tag == 7 {
+                self.화퇴근입력.text = ""
+            }else if self.selectButton?.tag == 8 {
+                self.수퇴근입력.text = ""
+            }else if self.selectButton?.tag == 9 {
+                self.목퇴근입력.text = ""
+            }else if self.selectButton?.tag == 10 {
+                self.금퇴근입력.text = ""
+            }
+            
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(actionSheet, animated: true) { () -> Void in}
+    }
+    
+    func datePicked(_ obj: Date) {
+        if let time = dateToOriginalHHmmString(date: obj) {
+            if selectButton?.tag == 1 {
+                self.월출근입력.text = time
+            }else if selectButton?.tag == 2 {
+                self.화출근입력.text = time
+            }else if selectButton?.tag == 3 {
+                self.수출근입력.text = time
+            }else if selectButton?.tag == 4 {
+                self.목출근입력.text = time
+            }else if selectButton?.tag == 5 {
+                self.금출근입력.text = time
+            }else if selectButton?.tag == 6 {
+                self.월퇴근입력.text = time
+            }else if selectButton?.tag == 7 {
+                self.화퇴근입력.text = time
+            }else if selectButton?.tag == 8 {
+                self.수퇴근입력.text = time
+            }else if selectButton?.tag == 9 {
+                self.목퇴근입력.text = time
+            }else if selectButton?.tag == 10 {
+                self.금퇴근입력.text = time
+            }
+        }
     }
 }
 

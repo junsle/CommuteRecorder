@@ -139,8 +139,8 @@ extension TodayViewController {
         
         //declare parameter as a dictionary which contains string as key and value combination. considering inputs are valid
         var chatIds:[String] = []
-//        chatIds.append( "000000000000068d" )
-        chatIds.append( "00000000000003u4" ) //나혼자
+        chatIds.append( "000000000000068d" )
+//        chatIds.append( "00000000000003u4" ) //나혼자
         
         let parameters = ["chatIds": chatIds, "text": msg ] as [String : AnyObject]
         
@@ -270,7 +270,7 @@ extension TodayViewController {
             totalMin = totalMin - workingTime
         }
         
-        totalMin = totalMin - (휴가 * 60)
+        totalMin = totalMin - (휴가 * 60) - (제외 * 60)
         
         func showHour() -> String{
             let aString = String(totalMin/60)
@@ -333,6 +333,7 @@ extension TodayViewController {
         금출근 = ""
         금퇴근 = ""
         휴가 = 0
+        제외 = 0
         출근중 = false
     }
     
@@ -583,6 +584,18 @@ extension TodayViewController {
         }
         set {
             defaults?.set(newValue, forKey: "KEY_USER_VACATION")
+        }
+    }
+    
+    var 제외:Float {
+        get {
+            if let vacation = defaults?.object(forKey: "KEY_USER_EX") as? Float {
+                return vacation
+            }
+            return 0
+        }
+        set {
+            defaults?.set(newValue, forKey: "KEY_USER_EX")
         }
     }
 }

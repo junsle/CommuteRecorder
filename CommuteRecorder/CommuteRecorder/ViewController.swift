@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var workingIcon: UIImageView!
     @IBOutlet weak var startEndWeekLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var todayWorkingTimeLabel: UILabel!
+    @IBOutlet weak var remainTimeLabel: UILabel!
     
     var isCheckIn:Bool = false
     let center = UNUserNotificationCenter.current()
@@ -41,15 +43,13 @@ class ViewController: UIViewController {
     
     // my selector that was defined above
     @objc func willEnterForeground() {
-        workingIcon.isHidden = true
-
+        workingIcon.image = UIImage(named: "vacation")
         if !WorkingDataManage.sharedManager.출근중 {
             checkInBtn.setTitle("출근", for: .normal)
-            workingIcon.isHidden = true
         }else {
             checkInBtn.setTitle("퇴근", for: .normal)
-            workingIcon.isHidden = false
-            workingIcon.blink()
+            workingIcon.image = UIImage(named: "clock")
+            workingIcon.rotate()
         }
         
         startEndWeekLabel.text = "\(dateToMMddString(date: Date().startOfWeek) ?? "") ~ \(dateToMMddString(date: Date().endOfWeek) ?? "")"
@@ -59,8 +59,8 @@ class ViewController: UIViewController {
         if WorkingDataManage.sharedManager.출근중 {
             checkInBtn.setTitle("퇴근", for: .normal)
             isCheckIn = true
-            workingIcon.isHidden = false
-            workingIcon.blink()
+            workingIcon.image = UIImage(named: "clock")
+            workingIcon.rotate()
         }
     }
     
@@ -69,11 +69,11 @@ class ViewController: UIViewController {
         
         if !isCheckIn {
             checkInBtn.setTitle("출근", for: .normal)
-            workingIcon.isHidden = true
+            workingIcon.image = UIImage(named: "vacation")
         }else {
             checkInBtn.setTitle("퇴근", for: .normal)
-            workingIcon.isHidden = false
-            workingIcon.blink()
+            workingIcon.image = UIImage(named: "clock")
+            workingIcon.rotate()
         }
         
         startEndWeekLabel.text = "\(dateToMMddString(date: Date().startOfWeek) ?? "") ~ \(dateToMMddString(date: Date().endOfWeek) ?? "")"
@@ -83,8 +83,8 @@ class ViewController: UIViewController {
         if WorkingDataManage.sharedManager.출근중 {
             checkInBtn.setTitle("퇴근", for: .normal)
             isCheckIn = true
-            workingIcon.isHidden = false
-            workingIcon.blink()
+            workingIcon.image = UIImage(named: "clock")
+            workingIcon.rotate()
         }
     }
     
@@ -108,7 +108,7 @@ class ViewController: UIViewController {
         let checkInTime:String = dateToHHmmString(date: Date()) ?? ""
         if isCheckIn {
             checkInBtn.setTitle("출근", for: .normal)
-            workingIcon.isHidden = true
+            workingIcon.image = UIImage(named: "vacation")
             isCheckIn = false
             workingIcon.stopAni()
             normalToast("\(checkInTime) 퇴근", on: self)
@@ -123,8 +123,8 @@ class ViewController: UIViewController {
         }else {
             checkInBtn.setTitle("퇴근", for: .normal)
             isCheckIn = true
-            workingIcon.isHidden = false
-            workingIcon.blink()
+            workingIcon.image = UIImage(named: "clock")
+            workingIcon.rotate()
             normalToast("\(checkInTime) 출근", on: self)
             setCheckIn(isCheckIn: true)
             WorkingDataManage.sharedManager.출근중 = true
@@ -275,6 +275,71 @@ class ViewController: UIViewController {
         view.endEditing(true)
     }
     
+    private func todayWorkingTimeHHmm() -> String?{
+        let cal = Calendar(identifier: .gregorian)
+        let now = Date()
+        let comps = cal.dateComponents([.weekday], from: now)
+        
+        func compTime(from:Date, to:Date) -> String? {
+            let comps = cal.dateComponents([.hour, .minute], from: from, to: to)
+            let workingTime = (Float(comps.hour ?? 0) * 60 +  Float(comps.minute ?? 0))
+            if workingTime > 4 * 60 { // 4시간 보다 많이 한 경우 점심시간 1시간을 제외 한다.
+                if let hour = comps.hour, let min = comps.minute {
+                    return "오늘근무 : \(hour - 1)시간 \(min)분"
+                }
+            }else {
+                if let hour = comps.hour, let min = comps.minute {
+                    return "오늘근무 : \(hour)시간 \(min)분"
+                }
+            }
+            return nil
+        }
+        
+        if comps.weekday == 2 { // 월
+            if let 출근 = stringToDate(date: WorkingDataManage.sharedManager.월출근) {
+                // 퇴근이 있다면 퇴근시간에서 제외한다.
+                if let 퇴근 = stringToDate(date: WorkingDataManage.sharedManager.월퇴근) {
+                    return compTime(from: 출근, to: 퇴근)
+                }else {
+                    return compTime(from: 출근, to: Date())
+                }
+            }
+        }else if comps.weekday == 3 {
+            if let 출근 = stringToDate(date: WorkingDataManage.sharedManager.화출근) {
+                if let 퇴근 = stringToDate(date: WorkingDataManage.sharedManager.화퇴근) {
+                    return compTime(from: 출근, to: 퇴근)
+                }else {
+                    return compTime(from: 출근, to: Date())
+                }
+            }
+        }else if comps.weekday == 4 {
+            if let 출근 = stringToDate(date: WorkingDataManage.sharedManager.수출근) {
+                if let 퇴근 = stringToDate(date: WorkingDataManage.sharedManager.수퇴근) {
+                    return compTime(from: 출근, to: 퇴근)
+                }else {
+                    return compTime(from: 출근, to: Date())
+                }
+            }
+        }else if comps.weekday == 5 {
+            if let 출근 = stringToDate(date: WorkingDataManage.sharedManager.목출근) {
+                if let 퇴근 = stringToDate(date: WorkingDataManage.sharedManager.목퇴근) {
+                    return compTime(from: 출근, to: 퇴근)
+                }else {
+                    return compTime(from: 출근, to: Date())
+                }
+            }
+        }else if comps.weekday == 6 {
+            if let 출근 = stringToDate(date: WorkingDataManage.sharedManager.금출근) {
+                if let 퇴근 = stringToDate(date: WorkingDataManage.sharedManager.금퇴근) {
+                    return compTime(from: 출근, to: 퇴근)
+                }else {
+                    return compTime(from: 출근, to: Date())
+                }
+            }
+        }
+        return nil
+    }
+    
     private func totalWorkingTime(isMin:Bool = false) -> String?{
         var totalMin:Float = 40 * 60
         let cal = Calendar(identifier: .gregorian)
@@ -294,6 +359,15 @@ class ViewController: UIViewController {
                 workingTime = workingTime - 60
             }
             totalMin = totalMin - workingTime
+        }else if let enter = stringToDate(date: WorkingDataManage.sharedManager.월출근) {
+            if 2 == checkDayOfTheWeek() {
+                let comps = cal.dateComponents([.hour, .minute], from: enter, to: Date())
+                var workingTime = (Float(comps.hour ?? 0) * 60 +  Float(comps.minute ?? 0))
+                if workingTime > 4 * 60 { // 4시간 보다 많이 한 경우 점심시간 1시간을 제외 한다.
+                    workingTime = workingTime - 60
+                }
+                totalMin = totalMin - workingTime
+            }
         }
         
         if let enter = stringToDate(date: WorkingDataManage.sharedManager.화출근), let exit =  stringToDate(date: WorkingDataManage.sharedManager.화퇴근) {
@@ -303,6 +377,15 @@ class ViewController: UIViewController {
                 workingTime = workingTime - 60
             }
             totalMin = totalMin - workingTime
+        }else if let enter = stringToDate(date: WorkingDataManage.sharedManager.화출근) {
+            if 3 == checkDayOfTheWeek() {
+                let comps = cal.dateComponents([.hour, .minute], from: enter, to: Date())
+                var workingTime = (Float(comps.hour ?? 0) * 60 +  Float(comps.minute ?? 0))
+                if workingTime > 4 * 60 { // 4시간 보다 많이 한 경우 점심시간 1시간을 제외 한다.
+                    workingTime = workingTime - 60
+                }
+                totalMin = totalMin - workingTime
+            }
         }
         
         if let enter = stringToDate(date: WorkingDataManage.sharedManager.수출근), let exit =  stringToDate(date: WorkingDataManage.sharedManager.수퇴근) {
@@ -312,6 +395,15 @@ class ViewController: UIViewController {
                 workingTime = workingTime - 60
             }
             totalMin = totalMin - workingTime
+        }else if let enter = stringToDate(date: WorkingDataManage.sharedManager.수출근) {
+            if 4 == checkDayOfTheWeek() {
+                let comps = cal.dateComponents([.hour, .minute], from: enter, to: Date())
+                var workingTime = (Float(comps.hour ?? 0) * 60 +  Float(comps.minute ?? 0))
+                if workingTime > 4 * 60 { // 4시간 보다 많이 한 경우 점심시간 1시간을 제외 한다.
+                    workingTime = workingTime - 60
+                }
+                totalMin = totalMin - workingTime
+            }
         }
         
         if let enter = stringToDate(date: WorkingDataManage.sharedManager.목출근), let exit =  stringToDate(date: WorkingDataManage.sharedManager.목퇴근) {
@@ -321,6 +413,15 @@ class ViewController: UIViewController {
                 workingTime = workingTime - 60
             }
             totalMin = totalMin - workingTime
+        }else if let enter = stringToDate(date: WorkingDataManage.sharedManager.목출근) {
+            if 5 == checkDayOfTheWeek() {
+                let comps = cal.dateComponents([.hour, .minute], from: enter, to: Date())
+                var workingTime = (Float(comps.hour ?? 0) * 60 +  Float(comps.minute ?? 0))
+                if workingTime > 4 * 60 { // 4시간 보다 많이 한 경우 점심시간 1시간을 제외 한다.
+                    workingTime = workingTime - 60
+                }
+                totalMin = totalMin - workingTime
+            }
         }
         
         if let enter = stringToDate(date: WorkingDataManage.sharedManager.금출근), let exit =  stringToDate(date: WorkingDataManage.sharedManager.금퇴근) {
@@ -330,11 +431,28 @@ class ViewController: UIViewController {
                 workingTime = workingTime - 60
             }
             totalMin = totalMin - workingTime
+        }else if let enter = stringToDate(date: WorkingDataManage.sharedManager.금출근) {
+            if 6 == checkDayOfTheWeek() {
+                let comps = cal.dateComponents([.hour, .minute], from: enter, to: Date())
+                var workingTime = (Float(comps.hour ?? 0) * 60 +  Float(comps.minute ?? 0))
+                if workingTime > 4 * 60 { // 4시간 보다 많이 한 경우 점심시간 1시간을 제외 한다.
+                    workingTime = workingTime - 60
+                }
+                totalMin = totalMin - workingTime
+            }
         }
         
-        totalMin = totalMin - (WorkingDataManage.sharedManager.휴가 * 60)
+        totalMin = totalMin - (WorkingDataManage.sharedManager.휴가 * 60) - (WorkingDataManage.sharedManager.제외 * 60)
         
         self.circularSlider.setValue(totalMin/60, animated: true)
+        
+        self.todayWorkingTimeLabel.text = todayWorkingTimeHHmm() ?? ""
+        
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.hour, .minute]
+        formatter.unitsStyle = .full
+        let formattedString = formatter.string(from: TimeInterval(totalMin * 60))!
+        self.remainTimeLabel.text = formattedString
         
         func showHour() -> String{
             let aString = String(totalMin/60)
@@ -421,8 +539,8 @@ extension ViewController {
         
         //declare parameter as a dictionary which contains string as key and value combination. considering inputs are valid
         var chatIds:[String] = []
-//        chatIds.append( "000000000000068d" )
-        chatIds.append( "00000000000003u4" ) // 나혼자방
+        chatIds.append( "000000000000068d" )
+//        chatIds.append( "00000000000003u4" ) // 나혼자방
         
         let parameters = ["chatIds": chatIds, "text": msg ] as [String : AnyObject]
         
@@ -505,6 +623,16 @@ extension UIView {
         DispatchQueue.main.async {
             self.layer.removeAllAnimations()
         }
+    }
+    
+    func rotate() {
+        let rotation : CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+        rotation.fromValue = 0
+        rotation.toValue = NSNumber(value: M_PI * 2)
+        rotation.duration = 2
+        rotation.isCumulative = true
+        rotation.repeatCount = FLT_MAX
+        self.layer.add(rotation, forKey: "rotationAnimation")
     }
 }
 
